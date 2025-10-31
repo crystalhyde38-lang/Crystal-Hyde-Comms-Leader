@@ -1,612 +1,585 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crystal Hyde - Senior Communications Leader</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 20px;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            overflow: hidden;
-        }
-        
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 60px 40px;
-            text-align: center;
-            position: relative;
-        }
-        
-        .profile-photo {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            border: 6px solid white;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            margin: 0 auto 30px;
-            display: block;
-            object-fit: cover;
-        }
-        
-        .header h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
-        
-        .header .subtitle {
-            font-size: 1.5em;
-            font-weight: 300;
-            margin-bottom: 20px;
-            opacity: 0.95;
-        }
-        
-        .tabs {
-            display: flex;
-            background: #f8f9fa;
-            border-bottom: 3px solid #667eea;
-            flex-wrap: wrap;
-        }
-        
-        .tab {
-            flex: 1;
-            padding: 20px;
-            text-align: center;
-            cursor: pointer;
-            background: #f8f9fa;
-            border: none;
-            font-size: 1.1em;
-            font-weight: 600;
-            color: #555;
-            transition: all 0.3s ease;
-            min-width: 150px;
-        }
-        
-        .tab:hover {
-            background: #e9ecef;
-            color: #667eea;
-        }
-        
-        .tab.active {
-            background: white;
-            color: #667eea;
-            border-bottom: 4px solid #667eea;
-        }
-        
-        .content {
-            padding: 40px;
-        }
-        
-        .tab-content {
-            display: none;
-        }
-        
-        .tab-content.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        section {
-            margin-bottom: 40px;
-        }
-        
-        h2 {
-            color: #667eea;
-            font-size: 2em;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #667eea;
-        }
-        
-        h3 {
-            color: #764ba2;
-            font-size: 1.5em;
-            margin: 30px 0 15px 0;
-        }
-        
-        h4 {
-            color: #555;
-            font-size: 1.2em;
-            margin: 20px 0 10px 0;
-        }
-        
-        p {
-            margin-bottom: 15px;
-            font-size: 1.05em;
-            text-align: justify;
-        }
-        
-        ul {
-            margin-left: 20px;
-            margin-bottom: 20px;
-        }
-        
-        li {
-            margin-bottom: 12px;
-            font-size: 1.05em;
-            line-height: 1.7;
-        }
-        
-        .highlight-box {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: 25px;
-            border-radius: 12px;
-            margin: 25px 0;
-            border-left: 5px solid #667eea;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        
-        .competencies-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-        
-        .competency-item {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            border: 2px solid #e9ecef;
-            transition: all 0.3s ease;
-        }
-        
-        .competency-item:hover {
-            border-color: #667eea;
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
-            transform: translateY(-5px);
-        }
-        
-        .competency-item strong {
-            color: #667eea;
-            font-size: 1.1em;
-            display: block;
-            margin-bottom: 8px;
-        }
-        
-        a {
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-        
-        a:hover {
-            color: #764ba2;
-            text-decoration: underline;
-        }
-        
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2em;
-            }
-            
-            .header .subtitle {
-                font-size: 1.2em;
-            }
-            
-            .profile-photo {
-                width: 150px;
-                height: 150px;
-            }
-            
-            .tabs {
-                flex-direction: column;
-            }
-            
-            .content {
-                padding: 20px;
-            }
-            
-            .competencies-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <header class="header">
-            <img src="https://customer-assets.emergentagent.com/job_44a7ad14-4cd9-4a2d-9563-dfdd74adc607/artifacts/0cc7o9ae_Crystal.jpg" alt="Crystal Hyde" class="profile-photo">
-            <h1>Crystal Hyde</h1>
-            <div class="subtitle">Senior Communications Leader</div>
-        </header>
-        
-        <div class="tabs">
-            <button class="tab active" onclick="showTab('overview')">Overview</button>
-            <button class="tab" onclick="showTab('experience')">Experience</button>
-            <button class="tab" onclick="showTab('portfolio')">Portfolio</button>
-            <button class="tab" onclick="showTab('expertise')">Expertise</button>
-            <button class="tab" onclick="showTab('education')">Education</button>
-            <button class="tab">Narrative Development</button>        
-        </div>
-        
-        <div class="content">
-            <!-- OVERVIEW TAB -->
-            <div id="overview" class="tab-content active">
-                <section>
-                    <h2>Professional Overview</h2>
-                    <p>Collaborative communications executive with 20+ years of experience building corporate brands, elevating media presence, and developing high-performing teams across technology, fintech, and manufacturing sectors. Proven track record of transforming communications functions into strategic business drivers through innovative campaigns, executive coaching, and cross-functional leadership.</p>
-                </section>
 
-                <section>
-                    <h2>Strategic Communications Leadership</h2>
-                    <p>My career has been defined by building and elevating corporate communications functions that drive measurable business results. From leading brand and technology communications at GM Canada to directing corporate communications at Visa Canada, I've consistently transformed communications from a support function into a strategic growth engine.</p>
-                    
-                    <p>I bring deep B2B technology experience, proven media relations success, executive coaching expertise, and a track record of managing both internal teams and external agencies. I excel at working cross-functionally, building stakeholder relationships, and creating integrated communications strategies that support corporate objectives while maintaining authentic brand voice.</p>
-                    
-                    <p>My experience spans the full scope of senior communications leadership—from public relations to customer advocacy, executive communications, and creative team leadership—all within technology-driven organizations.</p>
-                </section>
+Action: file_editor view /app/crystal_hyde_portfolio_complete.html
+Observation: /app/crystal_hyde_portfolio_complete.html:
+1|<!DOCTYPE html>
+2|<html lang="en">
+3|<head>
+4|    <meta charset="UTF-8">
+5|    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+6|    <title>Crystal Hyde - Senior Communications Leader</title>
+7|    <style>
+8|        * {
+9|            margin: 0;
+10|            padding: 0;
+11|            box-sizing: border-box;
+12|        }
+13|        
+14|        body {
+15|            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+16|            line-height: 1.6;
+17|            color: #333;
+18|            background: #f5f5f5;
+19|        }
+20|        
+21|        .container {
+22|            max-width: 1200px;
+23|            margin: 0 auto;
+24|            background: white;
+25|            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+26|        }
+27|        
+28|        .tabs {
+29|            display: flex;
+30|            background: #2c3e50;
+31|            flex-wrap: wrap;
+32|        }
+33|        
+34|        .tab {
+35|            flex: 1;
+36|            padding: 15px 20px;
+37|            background: #2c3e50;
+38|            color: white;
+39|            border: none;
+40|            cursor: pointer;
+41|            transition: background 0.3s;
+42|            font-size: 16px;
+43|            min-width: 120px;
+44|        }
+45|        
+46|        .tab:hover {
+47|            background: #34495e;
+48|        }
+49|        
+50|        .tab.active {
+51|            background: #3498db;
+52|        }
+53|        
+54|        .content {
+55|            padding: 40px;
+56|        }
+57|        
+58|        .tab-content {
+59|            display: none;
+60|        }
+61|        
+62|        .tab-content.active {
+63|            display: block;
+64|            animation: fadeIn 0.5s;
+65|        }
+66|        
+67|        @keyframes fadeIn {
+68|            from { opacity: 0; }
+69|            to { opacity: 1; }
+70|        }
+71|        
+72|        h1, h2, h3, h4 {
+73|            color: #2c3e50;
+74|            margin-bottom: 15px;
+75|        }
+76|        
+77|        h2 {
+78|            border-bottom: 3px solid #3498db;
+79|            padding-bottom: 10px;
+80|            margin-top: 30px;
+81|        }
+82|        
+83|        h3 {
+84|            margin-top: 25px;
+85|            color: #3498db;
+86|        }
+87|        
+88|        p {
+89|            margin-bottom: 15px;
+90|        }
+91|        
+92|        ul {
+93|            margin-left: 20px;
+94|            margin-bottom: 20px;
+95|        }
+96|        
+97|        li {
+98|            margin-bottom: 10px;
+99|        }
+100|        
+101|        a {
+102|            color: #3498db;
+103|            text-decoration: none;
+104|        }
+105|        
+106|        a:hover {
+107|            text-decoration: underline;
+108|        }
+109|        
+110|        .highlight-box {
+111|            background: #f8f9fa;
+112|            border-left: 4px solid #3498db;
+113|            padding: 20px;
+114|            margin: 20px 0;
+115|            border-radius: 4px;
+116|        }
+117|        
+118|        .competencies-grid {
+119|            display: grid;
+120|            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+121|            gap: 15px;
+122|            margin: 20px 0;
+123|        }
+124|        
+125|        .competency-item {
+126|            background: #f8f9fa;
+127|            padding: 15px;
+128|            border-radius: 4px;
+129|            border-left: 3px solid #3498db;
+130|        }
+131|        
+132|        section {
+133|            margin-bottom: 30px;
+134|        }
+135|        
+136|        @media (max-width: 768px) {
+137|            .tabs {
+138|                flex-direction: column;
+139|            }
+140|            
+141|            .tab {
+142|                width: 100%;
+143|            }
+144|            
+145|            .content {
+146|                padding: 20px;
+147|            }
+148|        }
+149|    </style>
+150|</head>
+151|<body>
+152|    <div class="container">
+153|        
+154|        <div class="tabs">
+155|            <button class="tab active" onclick="openTab(event, 'overview')">Overview</button>
+156|            <button class="tab" onclick="openTab(event, 'experience')">Experience</button>
+157|            <button class="tab" onclick="openTab(event, 'portfolio')">Portfolio</button>
+158|            <button class="tab" onclick="openTab(event, 'expertise')">Expertise</button>
+159|            <button class="tab" onclick="openTab(event, 'education')">Education</button>
+160|            <button class="tab" onclick="openTab(event, 'narrative-development')">Narrative Development</button>
+161|        </div>
+162|        
+163|        <div class="content">
+164|            <!-- OVERVIEW TAB -->
+165|            <div id="overview" class="tab-content active">
+166|                <section>
+167|                    <h2>Professional Overview</h2>
+168|                    <p>Collaborative communications executive with 20+ years of experience building corporate brands, elevating media presence, and developing high-performing teams across technology, fintech, and manufacturing sectors. Proven track record of transforming communications functions into strategic business drivers through innovative campaigns, executive coaching, and cross-functional leadership.</p>
+169|                </section>
+170|
+171|                <section>
+172|                    <h2>Strategic Communications Leadership</h2>
+173|                    <p>My career has been defined by building and elevating corporate communications functions that drive measurable business results. From leading brand and technology communications at GM Canada to directing corporate communications at Visa Canada, I've consistently transformed communications from a support function into a strategic growth engine.</p>
+174|                    
+175|                    <p>I bring deep B2B technology experience, proven media relations success, executive coaching expertise, and a track record of managing both internal teams and external agencies. I excel at working cross-functionally, building stakeholder relationships, and creating integrated communications strategies that support corporate objectives while maintaining authentic brand voice.</p>
+176|                    
+177|                    <p>My experience spans the full scope of senior communications leadership—from public relations to customer advocacy, executive communications, and creative team leadership—all within technology-driven organizations.</p>
+178|                </section>
+179|
+180|                <section>
+181|                    <h2>Key Differentiators</h2>
+182|                    <ul>
+183|                        <li><strong>Technology Industry Focus:</strong> Deep experience in tech (BlackBerry, GM Canada), fintech (Visa), and manufacturing sectors</li>
+184|                        <li><strong>Executive Coaching:</strong> Professional Certified Coach (PCC) with extensive experience coaching C-suite executives</li>
+185|                        <li><strong>Agency & Team Management:</strong> Led agency reviews, managed external partners, and built high-performing internal teams</li>
+186|                        <li><strong>Strategic & Tactical Balance:</strong> Equally comfortable developing long-term strategy and executing hands-on campaigns</li>
+187|                        <li><strong>Cross-Functional Leadership:</strong> Proven ability to collaborate with Marketing, Sales, Product, Legal, HR and Government Relations</li>
+188|                    </ul>
+189|                </section>
+190|            </div>
+191|
+192|            <!-- EXPERIENCE TAB -->
+193|            <div id="experience" class="tab-content">
+194|                <section>
+195|                    <h2>Professional Experience</h2>
+196|                    
+197|                    <h3>Director, Brand & Technology Communications | GM Canada</h3>
+198|                    <p>Led team of four communicators and two agency partners to promote new vehicles across GM brands. Developed multi-channel strategies collaborating with brand marketing teams and influencer networks.</p>
+199|                    <ul>
+200|                        <li><strong>Brand & Narrative Development:</strong> Created compelling narratives to educate and build awareness for electric vehicles and GM advanced technologies across Canadian markets</li>
+201|                        <li><strong>Integrated Communications:</strong> Bridged PR and marketing initiatives of earned, owned, and paid content to create a surround-sound externally</li>
+202|                        <li><strong>Agency Management:</strong> Conducted comprehensive agency reviews and replaced two agencies to create better efficiencies and improve ROI</li>
+203|                        <li><strong>Creative PR Activation:</strong> Spearheaded high-impact PR activation at Nathan Phillips Square Winter Glow event, serving as centerpiece of GM Canada's EV promotion</li>
+204|                        <li><strong>Strategic Partnerships:</strong> Established relationships with Betakit and The Logic to create a stronger tech narrative for GM in tech circles</li>
+205|                        <li><strong>Media & Influencer Success:</strong> Streamlined influencer contracts to secure more targeted influencers and garner greater attention for our brands</li>
+206|                    </ul>
+207|
+208|                    <h3>Senior Director, Corporate Communications | Visa Canada</h3>
+209|                    <p>Led Canadian media relations, employee communications, and stakeholder engagement for leading global payments technology company.</p>
+210|                    <ul>
+211|                        <li><strong>Strategic Communications Planning:</strong> Established a communications council to maximize events, sales and marketing through PR</li>
+212|                        <li><strong>Media Training & Executive Coaching:</strong> Media trained spokespeople and prepared speakers for interviews and external presentations</li>
+213|                        <li><strong>Agency Management:</strong> Initiated and led agency review and RFP process to optimize Visa Canada communications support</li>
+214|                        <li><strong>Global-Local Collaboration:</strong> Championed strategic partnership to align Visa Canada's "She's Next" initiative with global World Cup sponsorship</li>
+215|                        <li><strong>CSR Program Development:</strong> Spearheaded culturally-focused CSR program supporting Indigenous women-led small businesses, securing initial $15,000 contribution</li>
+216|                        <li><strong>Community Partnership:</strong> Led a team on a special project to support Feed Ontario resulting in a published Op-Ed</li>
+217|                    </ul>
+218|
+219|                    <h3>Communications Consultant & Media Trainer | Scout & Propel Communications</h3>
+220|                    <p>Provided strategic communications counsel, media training, and executive coaching to C-level leaders across industries.</p>
+221|                    <ul>
+222|                        <li><strong>Executive Coaching:</strong> Created customized coaching engagements for leaders and emerging people leaders</li>
+223|                        <li><strong>Media Relations Support:</strong> Provided onsite media relations support to C-level executives during critical announcements</li>
+224|                        <li><strong>Change Management:</strong> Developed change management strategies to effectively communicate organizational transitions</li>
+225|                        <li><strong>Thought Leadership:</strong> Wrote editorial content on leadership and communications published in <a href="https://www.theglobeandmail.com/business/careers/leadership/article-how-do-you-deal-with-workplace-bullies/" target="_blank">The Globe & Mail</a> and <a href="https://www.talentcanada.ca/a-new-ceo-is-going-to-be-named-what-do-you-do/" target="_blank">Talent Canada</a></li>
+226|                        <li><strong>Government Relations Success:</strong> Media trained several federal cabinet ministers and their staff to ensure clear, effective communications</li>
+227|                        <li><strong>High-Profile Event Management:</strong> Led press event to host the Premier and Ontario Minister, tied to commitment of creating 3,000 new jobs</li>
+228|                    </ul>
+229|
+230|                    <h3>North American Senior Manager, Communications | BlackBerry</h3>
+231|                    <p>Managed corporate media engagements and provided strategic communications direction during critical growth and transformation period.</p>
+232|                    <ul>
+233|                        <li><strong>Media Relations:</strong> Facilitated corporate media engagements and managed issues to promote brand and protect reputation</li>
+234|                        <li><strong>Executive Coaching:</strong> Coached dozens of senior executives on media responses and interview techniques</li>
+235|                        <li><strong>Cross-Functional Leadership:</strong> Provided strategic direction to multiple internal teams ensuring consistent messaging to key stakeholders</li>
+236|                        <li><strong>Government & Legal Support:</strong> Supported government relations and legal teams to establish partnerships and mitigate issues</li>
+237|                        <li><strong>Story Extension Strategy:</strong> Defined niche narratives to maximize product launch news beyond the initial announcement</li>
+238|                        <li><strong>Embargo Management:</strong> Secured exclusive pre-launch coverage by granting special design team access to national daily reporter</li>
+239|                    </ul>
+240|                </section>
+241|            </div>
+242|
+243|            <!-- PORTFOLIO TAB -->
+244|            <div id="portfolio" class="tab-content">
+245|                <section>
+246|                    <h2>Portfolio Highlights</h2>
+247|                    
+248|                    <h3>Creative PR & Brand Activations</h3>
+249|                    
+250|                    <div class="highlight-box">
+251|                        <h4>Product awareness challenge</h4>
+252|                        <h4>Challenge:</h4>
+253|                        <p>Create memorable brand experience showcasing EV technology capabilities</p>
+254|                        <h4>Solution:</h4>
+255|                        <p>Partnered with Rotary Club to use Silverado EV battery to illuminate 30-foot Tree of Remembrance at Nathan Phillips Square</p>
+256|                        <h4>Results:</h4>
+257|                        <p>200% media coverage goals exceeded, dozen influencer partnerships, live TV segment</p>
+258|                    </div>
+259|
+260|                    <div class="highlight-box">
+261|                        <h4>Program conflict challenge</h4>
+262|                        <h4>Challenge:</h4>
+263|                        <p>Align global World Cup sponsorship with local Canadian "She's Next" program</p>
+264|                        <h4>Solution:</h4>
+265|                        <p>Created culturally-focused grant program supporting Indigenous women-led businesses</p>
+266|                        <h4>Results:</h4>
+267|                        <p>$15,000 initial funding, lasting community partnership extending beyond World Cup</p>
+268|                    </div>
+269|
+270|                    <div class="highlight-box">
+271|                        <h4>Company positioning challenge</h4>
+272|                        <h4>Challenge:</h4>
+273|                        <p>Ensure company received credit for 1,000 job creation announcement beyond political coverage</p>
+274|                        <h4>Solution:</h4>
+275|                        <p>Pre-pitched exclusive CEO interviews to four targeted outlets post-announcement</p>
+276|                        <h4>Results:</h4>
+277|                        <p>100% success rate, dedicated company coverage with detailed context</p>
+278|                    </div>
+279|
+280|                    <!-- NEW: VISA WORLD CUP SECTION -->
+281|                    <div style="border: 2px solid #1a1f71; border-radius: 12px; padding: 25px; margin: 20px 0; background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);">
+282|                        <h3 style="color: #1a1f71; margin-top: 0; border-bottom: 3px solid #1a1f71; padding-bottom: 10px;">
+283|                            🏆 Visa FIFA Women's World Cup 2023: Strategic Program Alignment
+284|                        </h3>
+285|                        
+286|                        <div style="background: #fff; border-left: 4px solid #d32f2f; padding: 15px; margin: 15px 0; border-radius: 6px;">
+287|                            <h4 style="color: #d32f2f; margin-top: 0;">⚠️ The Challenge</h4>
+288|                            <p><strong>Global Initiative:</strong> Visa announced $500,000 in grants to women-owned small businesses across 64 Women's World Cup matches—each Player of the Match award would trigger a grant to a woman-owned business in the winning athlete's country ($5,000-$50,000 based on match stage)</p>
+289|                            <p style="margin-bottom: 0;"><strong>The Conflict:</strong> Canada's established <em>She's Next Grant Program</em> (launched 2021) was already awarding $10,000 grants + mentorship to individual women entrepreneurs—50 recipients to date. The World Cup program would create duplication and confusion.</p>
+290|                        </div>
+291|
+292|                        <div style="background: #fff; border-left: 4px solid #1a1f71; padding: 15px; margin: 15px 0; border-radius: 6px;">
+293|                            <h4 style="color: #1a1f71; margin-top: 0;">💡 My Strategic Solution</h4>
+294|                            <p><strong>Partner Pivot:</strong> I proposed redirecting Canadian Player of the Match grant funding to the <strong>Canadian Council for Aboriginal Business (CCAB)</strong> to support Indigenous women-led businesses</p>
+295|                            <p style="margin-bottom: 0;"><strong>Strategic Rationale:</strong> Serve a distinct audience, avoid program conflict, advance economic reconciliation, and create differentiated positioning for Visa Canada</p>
+296|                        </div>
+297|
+298|                        <div style="background: #fff; border-left: 4px solid #2e7d32; padding: 15px; margin: 15px 0; border-radius: 6px;">
+299|                            <h4 style="color: #2e7d32; margin-top: 0;">✅ Impact & Results</h4>
+300|                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+301|                                <div>
+302|                                    <p style="margin: 5px 0;"><strong>💰 $25,000 CAD</strong><br>
+303|                                    <span style="font-size: 14px; color: #666;">Initial CCAB contribution + additional funding based on player wins</span></p>
+304|                                    
+305|                                    <p style="margin: 15px 0 5px 0;"><strong>🎯 Dual-Track Success</strong><br>
+306|                                    <span style="font-size: 14px; color: #666;">Maintained She's Next integrity while fully participating in global initiative</span></p>
+307|                                </div>
+308|                                <div>
+309|                                    <p style="margin: 5px 0;"><strong>🇨🇦 Strategic Differentiation</strong><br>
+310|                                    <span style="font-size: 14px; color: #666;">Only country with culturally-focused approach addressing unique national priorities</span></p>
+311|                                    
+312|                                    <p style="margin: 15px 0 5px 0;"><strong>🤝 Sustainable Partnership</strong><br>
+313|                                    <span style="font-size: 14px; color: #666;">Established ongoing Visa-CCAB relationship beyond tournament</span></p>
+314|                                </div>
+315|                            </div>
+316|                        </div>
+317|
+318|                        <div style="background: #f8f9ff; padding: 15px; margin: 15px 0; border-radius: 6px; border: 1px solid #1a1f71;">
+319|                            <h4 style="color: #1a1f71; margin-top: 0;">🎯 Strategic Communications Impact</h4>
+320|                            <p style="margin-bottom: 0; font-size: 15px;">This decision demonstrated how thoughtful communications planning aligns global corporate initiatives with local market realities. Rather than creating competing programs or diluting existing efforts, the CCAB partnership allowed Visa Canada to honor both its World Cup sponsorship and She's Next brand commitments while advancing economic reconciliation—a distinctly Canadian approach that differentiated Visa Canada on the global stage.</p>
+321|                        </div>
+322|                    </div>
+323|
+324|                    <h3>Government Relations & Partnership Building</h3>
+325|                    <ul>
+326|                        <li>Led government relations efforts securing conditional grant from Ontario government for Linamar Corporation Technology Centre</li>
+327|                        <li>Negotiated partnership tied to creating 3,000 new jobs, orchestrated high-profile announcement with Ontario Minister</li>
+328|                        <li>Developed comprehensive PR campaign for Economic Development & Trade Cabinet Minister</li>
+329|                        <li>Secured front-page local coverage and Toronto Star business section placement, created reusable visual assets</li>
+330|                        <li>Initiated relationship with Aboriginal Small Business Organization for grant program</li>
+331|                        <li>Established jointly-administered program with long-term continuation beyond initial sponsorship</li>
+332|                    </ul>
+333|
+334|                    <h3>Executive Communications & Thought Leadership</h3>
+335|                    
+336|                    <h4>Media Training & Executive Preparation</h4>
+337|                    <ul>
+338|                        <li>Coached dozens of C-suite executives on media responses and interview techniques across BlackBerry, Visa, and consulting clients</li>
+339|                        <li>Prepared speakers for high-stakes media interviews and external presentations</li>
+340|                        <li>Created media briefing materials and Q&A documents for sensitive announcements</li>
+341|                        <li>Provided onsite support during major media events and product launches</li>
+342|                    </ul>
+343|
+344|                    <h4>Published Thought Leadership</h4>
+345|                    
+346|                    <!-- NEW: GLOBE AND MAIL ARTICLE CARD -->
+347|                    <div style="border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin: 15px 0; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+348|                        <div style="border-left: 4px solid #DA161F; padding-left: 15px; margin-bottom: 15px;">
+349|                            <h4 style="margin: 0 0 10px 0; color: #333;">
+350|                                <a href="https://www.theglobeandmail.com/business/careers/leadership/article-how-do-you-deal-with-workplace-bullies/" 
+351|                                   target="_blank" 
+352|                                   style="color: #DA161F; text-decoration: none;">
+353|                                    How do you deal with workplace bullies?
+354|                                </a>
+355|                            </h4>
+356|                            <p style="font-size: 13px; color: #666; margin: 5px 0;">
+357|                                <strong>The Globe and Mail</strong> | July 27, 2019
+358|                            </p>
+359|                        </div>
+360|                        <p style="font-size: 14px; line-height: 1.6; color: #444; margin: 0 0 15px 0;">
+361|                            <em>"Aggressive and mischievous behaviours cannot go unchecked; turning a blind eye only allows these behaviours to grow in power. Office politics are tricky to navigate and sometimes difficult to see clearly from the inside; seeking outside support can help leaders identify the issues and introduce a strategy for change."</em>
+362|                        </p>
+363|                        <div style="background: #f5f5f5; padding: 12px; border-radius: 4px;">
+364|                            <p style="font-size: 13px; margin: 0; color: #555;">
+365|                                <strong>Article Focus:</strong> Leadership strategies for addressing workplace harassment and building healthier organizational cultures through professional coaching and anti-harassment policies.
+366|                            </p>
+367|                        </div>
+368|                    </div>
+369|
+370|                    <ul>
+371|                        <li>Articles featured in <a href="https://www.talentcanada.ca/a-new-ceo-is-going-to-be-named-what-do-you-do/" target="_blank">Talent Canada</a> magazine, MarketingProfs.com</li>
+372|                        <li>Authored a series on business operations during an election, published in Communitech newsletter and Manufacturing magazine</li>
+373|                    </ul>
+374|                </section>
+375|            </div>
+376|
+377|            <!-- EXPERTISE TAB -->
+378|            <div id="expertise" class="tab-content">
+379|                <section>
+380|                    <h2>Core Expertise</h2>
+381|                    <h3>Key Communications Competencies</h3>
+382|                    
+383|                    <div class="competencies-grid">
+384|                        <div class="competency-item">
+385|                            <strong>Media Relations & PR</strong><br>
+386|                            Experienced media spokesperson and strong issues manager
+387|                        </div>
+388|                        <div class="competency-item">
+389|                            <strong>PR Agency Management</strong><br>
+390|                            Led agency reviews, improved efficiency & ROI
+391|                        </div>
+392|                        <div class="competency-item">
+393|                            <strong>Executive Communications</strong><br>
+394|                            PCC certified, trained 100+ executives & politicians
+395|                        </div>
+396|                        <div class="competency-item">
+397|                            <strong>Customer Advocacy</strong><br>
+398|                            Built lasting partnerships & storytelling programs
+399|                        </div>
+400|                        <div class="competency-item">
+401|                            <strong>Corporate Comms Strategy</strong><br>
+402|                            Integrated multi-channel earned, owned & paid media
+403|                        </div>
+404|                        <div class="competency-item">
+405|                            <strong>Brand Strategy & Narrative</strong><br>
+406|                            Compelling narratives for complex B2B products
+407|                        </div>
+408|                        <div class="competency-item">
+409|                            <strong>Cross-Functional Leadership</strong><br>
+410|                            Marketing, Sales, Product, Legal, HR & GR collaboration
+411|                        </div>
+412|                        <div class="competency-item">
+413|                            <strong>Creative Team Leadership</strong><br>
+414|                            Led teams, managed cross-functional initiatives
+415|                        </div>
+416|                        <div class="competency-item">
+417|                            <strong>B2B Technology Experience</strong><br>
+418|                            BlackBerry, Visa, GM Canada - 20+ years tech sector
+419|                        </div>
+420|                        <div class="competency-item">
+421|                            <strong>Crisis Communications</strong><br>
+422|                            Crisis scenario planning and management
+423|                        </div>
+424|                        <div class="competency-item">
+425|                            <strong>Government Relations</strong><br>
+426|                            Strong understanding of regulatory environment and business impacts
+427|                        </div>
+428|                        <div class="competency-item">
+429|                            <strong>Stakeholder Engagement</strong><br>
+430|                            Strategic relationship building across diverse audiences
+431|                        </div>
+432|                    </div>
+433|                </section>
+434|
+435|                <section>
+436|                    <h2>Industry Expertise</h2>
+437|                    <ul>
+438|                        <li><strong>Technology:</strong> BlackBerry, GM Canada automotive technology, understanding of complex technical products and innovation cycles</li>
+439|                        <li><strong>Fintech:</strong> Visa Canada, experience with payments technology, financial services communications, and regulatory environment</li>
+440|                        <li><strong>Manufacturing:</strong> Linamar Corporation government relations, understanding of manufacturing operations and supply chain</li>
+441|                        <li><strong>B2B Communications:</strong> Deep experience in enterprise communications, complex stakeholder management, and long sales cycles</li>
+442|                        <li><strong>Government & Public Affairs:</strong> Grant applications, ministerial communications, political campaign experience</li>
+443|                    </ul>
+444|                </section>
+445|            </div>
+446|
+447|            <!-- EDUCATION TAB -->
+448|            <div id="education" class="tab-content">
+449|                <section>
+450|                    <h2>Education & Certifications</h2>
+451|                    <h3>Professional Certified Coach (PCC) | 2019</h3>
+452|                    <p>College of Executive Coaching</p>
+453|                    
+454|                    <h3>Digital Marketing Certificate | 2025 - Present</h3>
+455|                    <p>Coursera (In Progress)</p>
+456|                    
+457|                    <h3>Bachelor of Arts, Political Studies</h3>
+458|                    <p>Queen's University, Kingston, Ontario</p>
+459|                    
+460|                    <h3>Diploma, Public Relations</h3>
+461|                    <p>Durham College, Oshawa, Ontario</p>
+462|                </section>
+463|
+464|                <section>
+465|                    <h2>Community Leadership</h2>
+466|                    <ul>
+467|                        <li><strong>Board Member</strong> | Canadian Influencer & Content Creator Association | 2025 - Present</li>
+468|                        <li><strong>Board Member</strong> | Feed Ontario | 2022 - 2023</li>
+469|                        <li><strong>Board Member</strong> | Food4Kids Waterloo Region | 2021 - 2023</li>
+470|                        <li><strong>PR Lead</strong> | Waterloo Mayoral Campaign | 2013</li>
+471|                    </ul>
+472|                </section>
+473|
+474|                <section>
+475|                    <h2>Ready to Drive Strategic Communications Results</h2>
+476|                    <p>My 20 years of experience in B2B technology, fintech, and manufacturing—combined with my proven track record in media relations, executive coaching (100+ executives and politicians trained), and strategic communications—makes me a valuable contributor to any organization's corporate reputation and brand presence. Strong collaborator and maximizer, enthused to upskill communications teams and partner with marketing to drive business results.</p>
+477|                </section>
+478|            </div>
+479|
+480|            <!-- NEW: NARRATIVE DEVELOPMENT TAB -->
+481|            <div id="narrative-development" class="tab-content">
+482|                <section>
+483|                    <h2>Narrative Development: GM Canada EV Story Evolution</h2>
+484|                    <p>As Director of Brand & Technology Communications at GM Canada, I led the strategic narrative shift from addressing "range anxiety" to building "range confidence" in electric vehicles. This evolution reflects how we transformed customer concerns into competitive advantages through compelling storytelling and strategic media partnerships.</p>
+485|                </section>
+486|
+487|                <section>
+488|                    <h3>Media Coverage: 1,000 Jobs & Technology Innovation</h3>
+489|                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px;">
+490|                        <div style="border: 1px solid #e0e0e0; padding: 15px; border-radius: 8px;">
+491|                            <img src="https://i.cbc.ca/1.3628756.1465571126!/cpImage/httpImage/image.jpg_gen/derivatives/16x9_1180/gm-trudeau-20160610.jpg?im=Resize%3D860" 
+492|                                 alt="GM Canada Jobs Announcement" 
+493|                                 style="width: 100%; height: auto; border-radius: 4px; margin-bottom: 10px;">
+494|                            <p style="font-size: 14px; color: #666; margin: 5px 0;">
+495|                                <strong>Date:</strong> June 10, 2016
+496|                            </p>
+497|                            <p style="font-size: 14px; margin: 5px 0;">
+498|                                <strong>Source:</strong> <a href="https://www.cbc.ca/news/business/gm-canada-engineers-1.3624257" target="_blank">CBC News</a>
+499|                            </p>
+500|                        </div>
+501|
+502|                        <div style="border: 1px solid #e0e0e0; padding: 15px; border-radius: 8px;">
+503|                            <img src="https://bloximages.chicago2.vip.townnews.com/thestar.com/content/tncms/assets/v3/editorial/7/8d/78d65f95-f97a-5081-9a25-c257d6b0e7ca/63ea921e1128a.image.jpg?resize=400%2C267" 
+504|                                 alt="GM Technical Jobs Ontario" 
+505|                                 style="width: 100%; height: auto; border-radius: 4px; margin-bottom: 10px;">
+506|                            <p style="font-size: 14px; color: #666; margin: 5px 0;">
+507|                                <strong>Date:</strong> June 10, 2016
+508|                            </p>
+509|                            <p style="font-size: 14px; margin: 5px 0;">
+510|                                <strong>Source:</strong> <a href="https://www.thestar.com/business/general-motors-to-create-700-technical-jobs-in-ontario/article_0bbba39e-59a3-5f6d-bd8a-4831a21ab4a3.html" target="_blank">Toronto Star</a>
+511|                            </p>
+512|                        </div>
+513|                    </div>
+514|                </section>
+515|
+516|                <section>
+517|                    <h3>Messaging Evolution: From Anxiety to Confidence</h3>
+518|                    <p>Through strategic narrative development, GM Canada evolved its EV communications from addressing customer concerns to positioning technological leadership. This messaging shift demonstrates how effective communications can reframe challenges as opportunities.</p>
+519|
+520|                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 20px;">
+521|                        <div class="highlight-box" style="background: #fff5f5; border-left: 4px solid #d32f2f;">
+522|                            <h4 style="color: #d32f2f; margin-bottom: 15px;">📉 Initial Challenge: Range Anxiety</h4>
+523|                            <blockquote style="font-style: italic; color: #333; margin: 15px 0; padding: 15px; background: white; border-radius: 4px;">
+524|                                "At the outset when range anxiety was at its highest, that became the thing that customers wanted"
+525|                            </blockquote>
+526|                            <p style="font-size: 13px; color: #666; margin-top: 10px;">
+527|                                <strong>Context:</strong> Early EV market focus on addressing customer concerns about battery range limitations
+528|                            </p>
+529|                            <p style="font-size: 13px; margin-top: 5px;">
+530|                                <strong>Source:</strong> <a href="https://canada.autonews.com/electric-vehicles/potential-tariffs-evs-china-welcomed-gm-canada-byd-eyes-market-entry" target="_blank">Automotive News Canada</a>
+531|                            </p>
+532|                        </div>
+533|
+534|                        <div class="highlight-box" style="background: #f1f8f4; border-left: 4px solid #2e7d32;">
+535|                            <h4 style="color: #2e7d32; margin-bottom: 15px;">📈 Strategic Evolution: Range Confidence</h4>
+536|                            <blockquote style="font-style: italic; color: #333; margin: 15px 0; padding: 15px; background: white; border-radius: 4px;">
+537|                                "It's an excellent way of using the power of OnStar Basics connectivity to instill range confidence for drivers"
+538|                            </blockquote>
+539|                            <p style="font-size: 13px; color: #666; margin-top: 10px;">
+540|                                <strong>Context:</strong> Technology-driven narrative shift positioning GM's connected vehicle capabilities as confidence builders
+541|                            </p>
+542|                            <p style="font-size: 13px; margin-top: 5px;">
+543|                                <strong>Source:</strong> <a href="https://www.theglobeandmail.com/drive/adv/article-range-confidence-and-hands-free-driving-set-a-new-standard-in-electric/" target="_blank">The Globe and Mail</a>
+544|                            </p>
+545|                        </div>
+546|                    </div>
+547|                </section>
+548|
+549|                <section style="margin-top: 30px;">
+550|                    <h3>Strategic Impact</h3>
+551|                    <ul>
+552|                        <li><strong>Narrative Transformation:</strong> Successfully repositioned GM Canada's EV story from addressing customer fears to showcasing technological innovation</li>
+553|                        <li><strong>Media Partnerships:</strong> Built strategic relationships with tech-focused outlets (BetaKit, The Logic) to establish GM as technology leader</li>
+554|                        <li><strong>Integrated Communications:</strong> Created surround-sound strategy bridging PR and marketing with earned, owned, and paid content</li>
+555|                        <li><strong>Brand Differentiation:</strong> Positioned OnStar connectivity and advanced features as confidence-building competitive advantages</li>
+556|                    </ul>
+557|                </section>
+558|            </div>
+559|        </div>
+560|    </div>
+561|
+562|    <script>
+563|        function openTab(evt, tabName) {
+564|            var i, tabcontent, tablinks;
+565|            
+566|            tabcontent = document.getElementsByClassName("tab-content");
+567|            for (i = 0; i < tabcontent.length; i++) {
+568|                tabcontent[i].className = tabcontent[i].className.replace(" active", "");
+569|            }
+570|            
+571|            tablinks = document.getElementsByClassName("tab");
+572|            for (i = 0; i < tablinks.length; i++) {
+573|                tablinks[i].className = tablinks[i].className.replace(" active", "");
+574|            }
+575|            
+576|            document.getElementById(tabName).className += " active";
+577|            evt.currentTarget.className += " active";
+578|        }
+579|    </script>
+580|</body>
+581|</html>
 
-                <section>
-                    <h2>Key Differentiators</h2>
-                    <ul>
-                        <li><strong>Technology Industry Focus:</strong> Deep experience in tech (BlackBerry, GM Canada), fintech (Visa), and manufacturing sectors</li>
-                        <li><strong>Executive Coaching:</strong> Professional Certified Coach (PCC) with extensive experience coaching C-suite executives</li>
-                        <li><strong>Agency & Team Management:</strong> Led agency reviews, managed external partners, and built high-performing internal teams</li>
-                        <li><strong>Strategic & Tactical Balance:</strong> Equally comfortable developing long-term strategy and executing hands-on campaigns</li>
-                        <li><strong>Cross-Functional Leadership:</strong> Proven ability to collaborate with Marketing, Sales, Product, Legal, HR and Government Relations</li>
-                    </ul>
-                </section>
-            </div>
-
-            <!-- EXPERIENCE TAB -->
-            <div id="experience" class="tab-content">
-                <section>
-                    <h2>Professional Experience</h2>
-                    
-                    <h3>Director, Brand & Technology Communications | GM Canada</h3>
-                    <p>Led team of four communicators and two agency partners to promote new vehicles across GM brands. Developed multi-channel strategies collaborating with brand marketing teams and influencer networks.</p>
-                    <ul>
-                        <li><strong>Brand & Narrative Development:</strong> Created compelling narratives to educate and build awareness for electric vehicles and GM advanced technologies across Canadian markets</li>
-                        <li><strong>Integrated Communications:</strong> Bridged PR and marketing initiatives of earned, owned, and paid content to create a surround-sound externally</li>
-                        <li><strong>Agency Management:</strong> Conducted comprehensive agency reviews and replaced two agencies to create better efficiencies and improve ROI</li>
-                        <li><strong>Creative PR Activation:</strong> Spearheaded high-impact PR activation at Nathan Phillips Square Winter Glow event, serving as centerpiece of GM Canada's EV promotion</li>
-                        <li><strong>Strategic Partnerships:</strong> Established relationships with Betakit and The Logic to create a stronger tech narrative for GM in tech circles</li>
-                        <li><strong>Media & Influencer Success:</strong> Streamlined influencer contracts to secure more targeted influencers and garner greater attention for our brands</li>
-                    </ul>
-
-                    <h3>Senior Director, Corporate Communications | Visa Canada</h3>
-                    <p>Led Canadian media relations, employee communications, and stakeholder engagement for leading global payments technology company.</p>
-                    <ul>
-                        <li><strong>Strategic Communications Planning:</strong> Established a communications council to maximize events, sales and marketing through PR</li>
-                        <li><strong>Media Training & Executive Coaching:</strong> Media trained spokespeople and prepared speakers for interviews and external presentations</li>
-                        <li><strong>Agency Management:</strong> Initiated and led agency review and RFP process to optimize Visa Canada communications support</li>
-                        <li><strong>Global-Local Collaboration:</strong> Championed strategic partnership to align Visa Canada's "She's Next" initiative with global World Cup sponsorship</li>
-                        <li><strong>CSR Program Development:</strong> Spearheaded culturally-focused CSR program supporting Indigenous women-led small businesses, securing initial $15,000 contribution</li>
-                        <li><strong>Community Partnership:</strong> Led a team on a special project to support Feed Ontario resulting in a published Op-Ed</li>
-                    </ul>
-
-                    <h3>Communications Consultant & Media Trainer | Scout & Propel Communications</h3>
-                    <p>Provided strategic communications counsel, media training, and executive coaching to C-level leaders across industries.</p>
-                    <ul>
-                        <li><strong>Executive Coaching:</strong> Created customized coaching engagements for leaders and emerging people leaders</li>
-                        <li><strong>Media Relations Support:</strong> Provided onsite media relations support to C-level executives during critical announcements</li>
-                        <li><strong>Change Management:</strong> Developed change management strategies to effectively communicate organizational transitions</li>
-                        <li><strong>Thought Leadership:</strong> Wrote editorial content on leadership and communications published in <a href="https://www.theglobeandmail.com/business/careers/leadership/article-how-do-you-deal-with-workplace-bullies/" target="_blank">The Globe & Mail</a> and <a href="https://www.talentcanada.ca/a-new-ceo-is-going-to-be-named-what-do-you-do/" target="_blank">Talent Canada</a></li>
-                        <li><strong>Government Relations Success:</strong> Media trained several federal cabinet ministers and their staff to ensure clear, effective communications</li>
-                        <li><strong>High-Profile Event Management:</strong> Led press event to host the Premier and Ontario Minister, tied to commitment of creating 3,000 new jobs</li>
-                    </ul>
-
-                    <h3>North American Senior Manager, Communications | BlackBerry</h3>
-                    <p>Managed corporate media engagements and provided strategic communications direction during critical growth and transformation period.</p>
-                    <ul>
-                        <li><strong>Media Relations:</strong> Facilitated corporate media engagements and managed issues to promote brand and protect reputation</li>
-                        <li><strong>Executive Coaching:</strong> Coached dozens of senior executives on media responses and interview techniques</li>
-                        <li><strong>Cross-Functional Leadership:</strong> Provided strategic direction to multiple internal teams ensuring consistent messaging to key stakeholders</li>
-                        <li><strong>Government & Legal Support:</strong> Supported government relations and legal teams to establish partnerships and mitigate issues</li>
-                        <li><strong>Story Extension Strategy:</strong> Defined niche narratives to maximize product launch news beyond the initial announcement</li>
-                        <li><strong>Embargo Management:</strong> Secured exclusive pre-launch coverage by granting special design team access to national daily reporter</li>
-                    </ul>
-                </section>
-            </div>
-
-            <!-- PORTFOLIO TAB -->
-            <div id="portfolio" class="tab-content">
-                <section>
-                    <h2>Portfolio Highlights</h2>
-                    
-                    <h3>Creative PR & Brand Activations</h3>
-                    
-                    <div class="highlight-box">
-                        <h4>Product awareness challenge</h4>
-                        <h4>Challenge:</h4>
-                        <p>Create memorable brand experience showcasing EV technology capabilities</p>
-                        <h4>Solution:</h4>
-                        <p>Partnered with Rotary Club to use Silverado EV battery to illuminate 30-foot Tree of Remembrance at Nathan Phillips Square</p>
-                        <h4>Results:</h4>
-                        <p>200% media coverage goals exceeded, dozen influencer partnerships, live TV segment</p>
-                    </div>
-
-                    <<div class="highlight-box">
-    <h4>Strategic program alignment challenge</h4>
-    <h4>Challenge:</h4>
-    <p>Visa's global FIFA Women's World Cup 2023 small business grant program ($500,000 across 64 matches) conflicted with Canada's established She's Next Grant Program (running since 2021, already supporting 50 female entrepreneurs with $10,000 grants + mentorship)</p>
-    <h4>My Solution:</h4>
-    <p>Proposed partnering with Canadian Council for Aboriginal Business (CCAB) to direct Canadian Player of the Match grant funding to Indigenous women-led businesses—a distinct audience avoiding duplication while advancing economic reconciliation</p>
-    <h4>Results:</h4>
-    <ul>
-        <li><strong>$25,000 CAD</strong> initial contribution to CCAB + additional funding tied to Canadian player wins</li>
-        <li><strong>Dual-track success:</strong> Maintained integrity of She's Next program while fully participating in global World Cup initiative</li>
-        <li><strong>Strategic differentiation:</strong> Only country to create culturally-focused approach addressing unique national priorities</li>
-        <li><strong>Community impact:</strong> Advanced economic reconciliation through Indigenous women entrepreneur support</li>
-        <li><strong>Sustainable partnership:</strong> Established ongoing relationship between Visa Canada and CCAB beyond tournament</li>
-    </ul>
-    <h4>Why This Mattered:</h4>
-    <p>This strategic decision demonstrated how thoughtful communications planning can align global corporate initiatives with local market realities. Rather than creating competing programs or diluting existing efforts, the CCAB partnership allowed Visa Canada to honor both its World Cup sponsorship commitments and its established She's Next brand while serving an underrepresented community.</p>
-</div>
-
-                    <div class="highlight-box">
-                        <h4>Company positioning challenge</h4>
-                        <h4>Challenge:</h4>
-                        <p>Ensure company received credit for 1,000 job creation announcement beyond political coverage</p>
-                        <h4>Solution:</h4>
-                        <p>Pre-pitched exclusive CEO interviews to four targeted outlets post-announcement</p>
-                        <h4>Results:</h4>
-                        <p>100% success rate, dedicated company coverage with detailed context</p>
-                    </div>
-
-                    <h3>Government Relations & Partnership Building</h3>
-                    <ul>
-                        <li>Led government relations efforts securing conditional grant from Ontario government for Linamar Corporation Technology Centre</li>
-                        <li>Negotiated partnership tied to creating 3,000 new jobs, orchestrated high-profile announcement with Ontario Minister</li>
-                        <li>Developed comprehensive PR campaign for Economic Development & Trade Cabinet Minister</li>
-                        <li>Secured front-page local coverage and Toronto Star business section placement, created reusable visual assets</li>
-                        <li>Initiated relationship with Aboriginal Small Business Organization for grant program</li>
-                        <li>Established jointly-administered program with long-term continuation beyond initial sponsorship</li>
-                    </ul>
-
-                    <h3>Executive Communications & Thought Leadership</h3>
-                    
-                    <h4>Media Training & Executive Preparation</h4>
-                    <ul>
-                        <li>Coached dozens of C-suite executives on media responses and interview techniques across BlackBerry, Visa, and consulting clients</li>
-                        <li>Prepared speakers for high-stakes media interviews and external presentations</li>
-                        <li>Created media briefing materials and Q&A documents for sensitive announcements</li>
-                        <li>Provided onsite support during major media events and product launches</li>
-                    </ul>
-
-                    <h4>Published Thought Leadership</h4>
-                    <ul>
-                        <li>Editorial content on leadership and communications published in <a href="https://www.theglobeandmail.com/business/careers/leadership/article-how-do-you-deal-with-workplace-bullies/" target="_blank">The Globe & Mail</a></li>
-                        <li>Articles featured in <a href="https://www.talentcanada.ca/a-new-ceo-is-going-to-be-named-what-do-you-do/" target="_blank">Talent Canada</a> magazine, MarketingProfs.com</li>
-                        <li>Authored a series on business operations during an election, published in Communitech newsletter and Manufacturing magazine</li>
-                    </ul>
-                </section>
-            </div>
-
-            <!-- EXPERTISE TAB -->
-            <div id="expertise" class="tab-content">
-                <section>
-                    <h2>Core Expertise</h2>
-                    <h3>Key Communications Competencies</h3>
-                    
-                    <div class="competencies-grid">
-                        <div class="competency-item">
-                            <strong>Media Relations & PR</strong><br>
-                            Experienced media spokesperson and strong issues manager
-                        </div>
-                        <div class="competency-item">
-                            <strong>PR Agency Management</strong><br>
-                            Led agency reviews, improved efficiency & ROI
-                        </div>
-                        <div class="competency-item">
-                            <strong>Executive Communications</strong><br>
-                            PCC certified, trained 100+ executives & politicians
-                        </div>
-                        <div class="competency-item">
-                            <strong>Customer Advocacy</strong><br>
-                            Built lasting partnerships & storytelling programs
-                        </div>
-                        <div class="competency-item">
-                            <strong>Corporate Comms Strategy</strong><br>
-                            Integrated multi-channel earned, owned & paid media
-                        </div>
-                        <div class="competency-item">
-                            <strong>Brand Strategy & Narrative</strong><br>
-                            Compelling narratives for complex B2B products
-                        </div>
-                        <div class="competency-item">
-                            <strong>Cross-Functional Leadership</strong><br>
-                            Marketing, Sales, Product, Legal, HR & GR collaboration
-                        </div>
-                        <div class="competency-item">
-                            <strong>Creative Team Leadership</strong><br>
-                            Led teams, managed cross-functional initiatives
-                        </div>
-                        <div class="competency-item">
-                            <strong>B2B Technology Experience</strong><br>
-                            BlackBerry, Visa, GM Canada - 20+ years tech sector
-                        </div>
-                        <div class="competency-item">
-                            <strong>Crisis Communications</strong><br>
-                            Crisis scenario planning and management
-                        </div>
-                        <div class="competency-item">
-                            <strong>Government Relations</strong><br>
-                            Strong understanding of regulatory environment and business impacts
-                        </div>
-                        <div class="competency-item">
-                            <strong>Stakeholder Engagement</strong><br>
-                            Strategic relationship building across diverse audiences
-                        </div>
-                    </div>
-                </section>
-
-                <section>
-                    <h2>Industry Expertise</h2>
-                    <ul>
-                        <li><strong>Technology:</strong> BlackBerry, GM Canada automotive technology, understanding of complex technical products and innovation cycles</li>
-                        <li><strong>Fintech:</strong> Visa Canada, experience with payments technology, financial services communications, and regulatory environment</li>
-                        <li><strong>Manufacturing:</strong> Linamar Corporation government relations, understanding of manufacturing operations and supply chain</li>
-                        <li><strong>B2B Communications:</strong> Deep experience in enterprise communications, complex stakeholder management, and long sales cycles</li>
-                        <li><strong>Government & Public Affairs:</strong> Grant applications, ministerial communications, political campaign experience</li>
-                    </ul>
-                </section>
-            </div>
-
-            <!-- EDUCATION TAB -->
-            <div id="education" class="tab-content">
-                <section>
-                    <h2>Education & Certifications</h2>
-                    <h3>Professional Certified Coach (PCC) | 2019</h3>
-                    <p>College of Executive Coaching</p>
-                    
-                    <h3>Digital Marketing Certificate | 2025 - Present</h3>
-                    <p>Coursera (In Progress)</p>
-                    
-                    <h3>Bachelor of Arts, Political Studies</h3>
-                    <p>Queen's University, Kingston, Ontario</p>
-                    
-                    <h3>Diploma, Public Relations</h3>
-                    <p>Durham College, Oshawa, Ontario</p>
-                </section>
-
-                <section>
-                    <h2>Community Leadership</h2>
-                    <ul>
-                        <li><strong>Board Member</strong> | Canadian Influencer & Content Creator Association | 2025 - Present</li>
-                        <li><strong>Board Member</strong> | Feed Ontario | 2022 - 2023</li>
-                        <li><strong>Board Member</strong> | Food4Kids Waterloo Region | 2021 - 2023</li>
-                        <li><strong>PR Lead</strong> | Waterloo Mayoral Campaign | 2013</li>
-                    </ul>
-                </section>
-
-                <section>
-                    <h2>Ready to Drive Strategic Communications Results</h2>
-                    <p>My 20 years of experience in B2B technology, fintech, and manufacturing—combined with my proven track record in media relations, executive coaching (100+ executives and politicians trained), and strategic communications—makes me a valuable contributor to any organization's corporate reputation and brand presence. Strong collaborator and maximizer, enthused to upskill communications teams and partner with marketing to drive business results.</p>
-                </section>
-            </div>
-        </div>
-    </div>
-    <!-- NARRATIVE DEVELOPMENT TAB -->
-<div id="narrative-development" class="tab-content">
-    <section>
-        <h2>Narrative Development: GM Canada EV Story Evolution</h2>
-        <p>As Director of Brand & Technology Communications at GM Canada, I led the strategic narrative shift from addressing "range anxiety" to building "range confidence" in electric vehicles. This evolution reflects how we transformed customer concerns into competitive advantages through compelling storytelling and strategic media partnerships.</p>
-    </section>
-
-    <section>
-        <h3>Media Coverage: 1,000 Jobs & Technology Innovation</h3>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px;">
-            <!-- First Article -->
-            <div style="border: 1px solid #e0e0e0; padding: 15px; border-radius: 8px;">
-                <img src="https://i.cbc.ca/1.3628756.1465571126!/cpImage/httpImage/image.jpg_gen/derivatives/16x9_1180/gm-trudeau-20160610.jpg?im=Resize%3D860" 
-                     alt="GM Canada Jobs Announcement" 
-                     style="width: 100%; height: auto; border-radius: 4px; margin-bottom: 10px;">
-                <p style="font-size: 14px; color: #666; margin: 5px 0;">
-                    <strong>Date:</strong> June 10, 2016
-                </p>
-                <p style="font-size: 14px; margin: 5px 0;">
-                    <strong>Source:</strong> <a href="https://www.cbc.ca/news/business/gm-canada-engineers-1.3624257" target="_blank">CBC News</a>
-                </p>
-            </div>
-
-            <!-- Second Article -->
-            <div style="border: 1px solid #e0e0e0; padding: 15px; border-radius: 8px;">
-                <img src="https://bloximages.chicago2.vip.townnews.com/thestar.com/content/tncms/assets/v3/editorial/7/8d/78d65f95-f97a-5081-9a25-c257d6b0e7ca/63ea921e1128a.image.jpg?resize=400%2C267" 
-                     alt="GM Technical Jobs Ontario" 
-                     style="width: 100%; height: auto; border-radius: 4px; margin-bottom: 10px;">
-                <p style="font-size: 14px; color: #666; margin: 5px 0;">
-                    <strong>Date:</strong> June 10, 2016
-                </p>
-                <p style="font-size: 14px; margin: 5px 0;">
-                    <strong>Source:</strong> <a href="https://www.thestar.com/business/general-motors-to-create-700-technical-jobs-in-ontario/article_0bbba39e-59a3-5f6d-bd8a-4831a21ab4a3.html" target="_blank">Toronto Star</a>
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <h3>Messaging Evolution: From Anxiety to Confidence</h3>
-        <p>Through strategic narrative development, GM Canada evolved its EV communications from addressing customer concerns to positioning technological leadership. This messaging shift demonstrates how effective communications can reframe challenges as opportunities.</p>
-
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 20px;">
-            <!-- Range Anxiety Quote -->
-            <div class="highlight-box" style="background: #fff5f5; border-left: 4px solid #d32f2f;">
-                <h4 style="color: #d32f2f; margin-bottom: 15px;">📉 Initial Challenge: Range Anxiety</h4>
-                <blockquote style="font-style: italic; color: #333; margin: 15px 0; padding: 15px; background: white; border-radius: 4px;">
-                    "At the outset when range anxiety was at its highest, that became the thing that customers wanted"
-                </blockquote>
-                <p style="font-size: 13px; color: #666; margin-top: 10px;">
-                    <strong>Context:</strong> Early EV market focus on addressing customer concerns about battery range limitations
-                </p>
-                <p style="font-size: 13px; margin-top: 5px;">
-                    <strong>Source:</strong> <a href="https://canada.autonews.com/electric-vehicles/potential-tariffs-evs-china-welcomed-gm-canada-byd-eyes-market-entry" target="_blank">Automotive News Canada</a>
-                </p>
-            </div>
-
-            <!-- Range Confidence Quote -->
-            <div class="highlight-box" style="background: #f1f8f4; border-left: 4px solid #2e7d32;">
-                <h4 style="color: #2e7d32; margin-bottom: 15px;">📈 Strategic Evolution: Range Confidence</h4>
-                <blockquote style="font-style: italic; color: #333; margin: 15px 0; padding: 15px; background: white; border-radius: 4px;">
-                    "It's an excellent way of using the power of OnStar Basics connectivity to instill range confidence for drivers"
-                </blockquote>
-                <p style="font-size: 13px; color: #666; margin-top: 10px;">
-                    <strong>Context:</strong> Technology-driven narrative shift positioning GM's connected vehicle capabilities as confidence builders
-                </p>
-                <p style="font-size: 13px; margin-top: 5px;">
-                    <strong>Source:</strong> <a href="https://www.theglobeandmail.com/drive/adv/article-range-confidence-and-hands-free-driving-set-a-new-standard-in-electric/" target="_blank">The Globe and Mail</a>
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section style="margin-top: 30px;">
-        <h3>Strategic Impact</h3>
-        <ul>
-            <li><strong>Narrative Transformation:</strong> Successfully repositioned GM Canada's EV story from addressing customer fears to showcasing technological innovation</li>
-            <li><strong>Media Partnerships:</strong> Built strategic relationships with tech-focused outlets (BetaKit, The Logic) to establish GM as technology leader</li>
-            <li><strong>Integrated Communications:</strong> Created surround-sound strategy bridging PR and marketing with earned, owned, and paid content</li>
-            <li><strong>Brand Differentiation:</strong> Positioned OnStar connectivity and advanced features as confidence-building competitive advantages</li>
-        </ul>
-    </section>
-</div>
-    <script>
-        function showTab(tabName) {
-            // Hide all tab contents
-            const tabContents = document.querySelectorAll('.tab-content');
-            tabContents.forEach(content => {
-                content.classList.remove('active');
-            });
-            
-            // Remove active class from all tabs
-            const tabs = document.querySelectorAll('.tab');
-            tabs.forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            // Show selected tab content
-            document.getElementById(tabName).classList.add('active');
-            
-            // Add active class to clicked tab
-            event.target.classList.add('active');
-        }
-    </script>
-</body>
-</html>
