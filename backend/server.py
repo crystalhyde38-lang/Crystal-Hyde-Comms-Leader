@@ -68,35 +68,42 @@ async def generate_infographic():
         
         # Detailed prompt with all the information
         prompt = """
-Create a professional infographic for Visa's Women's World Cup 2023 Small Business Grant Program with the following information:
+Create a clean, professional corporate infographic poster with CLEAR, READABLE TEXT in English.
 
-Title: "Visa Women's World Cup 2023 Small Business Grant Program"
+CRITICAL: All text must be in ENGLISH, large, bold, and easy to read. No blurry or garbled text.
 
-Key Information:
-• Year: 2023 (FIFA Women's World Cup Australia & New Zealand 2023™)
-• Program: Visa Player of the Match Grant
-• Total Funding: $500,000 USD globally
-• Innovation: First time the Visa Player of the Match award was linked to a grant
+Title at top (large, bold, white text):
+"VISA WOMEN'S WORLD CUP 2023
+SMALL BUSINESS GRANT PROGRAM"
 
-How it Worked:
-• After each of the 64 matches, a female small business owner from the winning player's country received a grant
-• Grant amounts ranged from $5,000 USD (group-stage matches) to $50,000 USD (Final)
+Layout sections from top to bottom with large, readable text:
 
-Canada Partnership:
-• Visa partnered with the Canadian Council of Aboriginal Business (CCAB)
-• When a Canadian player won Player of the Match, funds were granted to CCAB
-• Purpose: Support Indigenous women entrepreneurs
+SECTION 1 - KEY FACTS (with icons):
+💰 Total Funding: $500,000 USD
+⚽ Matches: 64 Grant Opportunities  
+🏆 Innovation: First Player of Match Award Linked to Grant
 
-Design Requirements:
-• Use Visa blue (#1434CB) as the primary color
-• Include gold accents for premium feel
-• Professional, modern layout
-• Clear visual hierarchy
-• Icons or graphics representing: soccer ball, trophy, business/entrepreneurship, global reach
-• Canada flag or maple leaf to highlight the Canadian angle
-• Clean typography with headers and organized information blocks
+SECTION 2 - HOW IT WORKED:
+• Female small business owners received grants
+• $5,000 (group stage) to $50,000 (final)
+• One grant per match based on Player of the Match winner's country
 
-Style: Professional corporate infographic, clean and modern, suitable for business presentation
+SECTION 3 - CANADA PARTNERSHIP:
+🇨🇦 Partnership with CCAB (Canadian Council of Aboriginal Business)
+• Supporting Indigenous women entrepreneurs
+• Aligned with She's Next Program mission
+
+Design Style:
+• Visa blue (#1434CB) background
+• Gold/yellow (#FFD700) accents and text highlights
+• White text for maximum readability
+• Simple, clean layout with plenty of white space
+• Large, bold, sans-serif typography
+• Simple icons (trophy, soccer ball, money bag, maple leaf)
+• Professional corporate style
+• Portrait orientation (1024x1536)
+
+IMPORTANT: Focus on text clarity and readability. Large fonts, high contrast, simple design.
         """
         
         logger.info("Calling OpenAI Image Generation API...")
