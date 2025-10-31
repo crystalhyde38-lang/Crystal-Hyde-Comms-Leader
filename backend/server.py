@@ -217,66 +217,16 @@ async def generate_infographic():
     Generate an infographic for Visa's Women's World Cup 2023 Small Business Grant Program
     """
     try:
-        logger.info("Starting infographic generation...")
+        logger.info("Starting infographic generation using Pillow...")
         
-        # Detailed prompt with all the information
-        prompt = """
-Create a clean, professional corporate infographic poster with CLEAR, READABLE TEXT in English.
-
-CRITICAL: All text must be in ENGLISH, large, bold, and easy to read. No blurry or garbled text.
-
-Title at top (large, bold, white text):
-"VISA WOMEN'S WORLD CUP 2023
-SMALL BUSINESS GRANT PROGRAM"
-
-Layout sections from top to bottom with large, readable text:
-
-SECTION 1 - KEY FACTS (with icons):
-💰 Total Funding: $500,000 USD
-⚽ Matches: 64 Grant Opportunities  
-🏆 Innovation: First Player of Match Award Linked to Grant
-
-SECTION 2 - HOW IT WORKED:
-• Female small business owners received grants
-• $5,000 (group stage) to $50,000 (final)
-• One grant per match based on Player of the Match winner's country
-
-SECTION 3 - CANADA PARTNERSHIP:
-🇨🇦 Partnership with CCAB (Canadian Council of Aboriginal Business)
-• Supporting Indigenous women entrepreneurs
-• Aligned with She's Next Program mission
-
-Design Style:
-• Visa blue (#1434CB) background
-• Gold/yellow (#FFD700) accents and text highlights
-• White text for maximum readability
-• Simple, clean layout with plenty of white space
-• Large, bold, sans-serif typography
-• Simple icons (trophy, soccer ball, money bag, maple leaf)
-• Professional corporate style
-• Portrait orientation (1024x1536)
-
-IMPORTANT: Focus on text clarity and readability. Large fonts, high contrast, simple design.
-        """
+        # Create the infographic
+        img = create_infographic()
         
-        logger.info("Calling OpenAI Image Generation API...")
-        
-        # Initialize image generator
-        image_gen = OpenAIImageGeneration(api_key=emergent_llm_key)
-        
-        # Generate images
-        images = await image_gen.generate_images(
-            prompt=prompt,
-            model="gpt-image-1",
-            number_of_images=1
-        )
-        
-        if not images or len(images) == 0:
-            logger.error("No image was generated")
-            raise HTTPException(status_code=500, detail="No image was generated")
-        
-        # Convert image to base64
-        image_base64 = base64.b64encode(images[0]).decode('utf-8')
+        # Convert to base64
+        buffered = BytesIO()
+        img.save(buffered, format="PNG", quality=95)
+        img_bytes = buffered.getvalue()
+        image_base64 = base64.b64encode(img_bytes).decode('utf-8')
         image_data_uri = f"data:image/png;base64,{image_base64}"
         
         logger.info("Infographic generated successfully")
@@ -284,7 +234,7 @@ IMPORTANT: Focus on text clarity and readability. Large fonts, high contrast, si
         # Save to database
         infographic_obj = InfographicGeneration(
             image_base64=image_data_uri,
-            prompt=prompt
+            prompt="Generated using Pillow - Visa Women's World Cup 2023 Grant Program"
         )
         
         doc = infographic_obj.model_dump()
