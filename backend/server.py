@@ -44,151 +44,165 @@ def create_infographic():
     
     # Colors
     visa_blue = (20, 52, 203)  # #1434CB
-    visa_blue_dark = (10, 31, 111)  # Darker shade
+    visa_blue_dark = (10, 31, 111)
     gold = (255, 215, 0)  # #FFD700
     white = (255, 255, 255)
-    light_blue = (100, 130, 230)
+    light_blue = (70, 100, 220)
     
-    # Create image with gradient background
+    # Create solid background
     img = Image.new('RGB', (width, height), visa_blue)
     draw = ImageDraw.Draw(img)
     
-    # Create gradient background
-    for y in range(height):
-        shade = int(255 * (1 - y / height * 0.3))
-        color = (
-            int(visa_blue[0] * shade / 255),
-            int(visa_blue[1] * shade / 255),
-            int(visa_blue[2] * shade / 255)
-        )
-        draw.rectangle([(0, y), (width, y + 1)], fill=color)
-    
-    # Try to load fonts, fallback to default if not available
+    # Load fonts with better sizes
     try:
-        title_font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 52)
-        heading_font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 40)
-        subheading_font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 32)
-        body_font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 26)
-        small_font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 22)
+        logo_font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 70)
+        title_font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 48)
+        heading_font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 36)
+        body_font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 24)
+        small_font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 20)
     except:
-        # Fallback to default font
-        title_font = ImageFont.load_default()
-        heading_font = ImageFont.load_default()
-        subheading_font = ImageFont.load_default()
-        body_font = ImageFont.load_default()
-        small_font = ImageFont.load_default()
+        logo_font = heading_font = title_font = body_font = small_font = ImageFont.load_default()
     
-    y_pos = 60
+    # Add padding
+    padding = 60
+    y_pos = padding
     
-    # Draw VISA logo text
-    draw.text((width // 2, y_pos), "VISA", font=heading_font, fill=gold, anchor="mm")
-    y_pos += 80
+    # VISA logo with background box
+    logo_box_height = 100
+    draw.rectangle([(0, 0), (width, logo_box_height)], fill=visa_blue_dark)
+    draw.text((width // 2, logo_box_height // 2), "VISA", font=logo_font, fill=gold, anchor="mm")
+    y_pos = logo_box_height + 50
     
-    # Draw main title
+    # Main title - cleaner, larger
     title_lines = [
         "WOMEN'S WORLD CUP 2023",
-        "SMALL BUSINESS",
-        "GRANT PROGRAM"
+        "SMALL BUSINESS GRANT PROGRAM"
     ]
     for line in title_lines:
         draw.text((width // 2, y_pos), line, font=title_font, fill=white, anchor="mm")
-        y_pos += 60
+        y_pos += 58
     
-    y_pos += 20
+    y_pos += 30
     
-    # Draw decorative line
-    draw.rectangle([(100, y_pos), (width - 100, y_pos + 4)], fill=gold)
-    y_pos += 40
+    # Separator line
+    line_margin = 80
+    draw.rectangle([(line_margin, y_pos), (width - line_margin, y_pos + 3)], fill=gold)
+    y_pos += 50
     
-    # KEY FACTS section
+    # KEY FACTS - single row, larger boxes
     draw.text((width // 2, y_pos), "KEY FACTS", font=heading_font, fill=gold, anchor="mm")
-    y_pos += 60
+    y_pos += 50
     
-    # Key facts in boxes
+    # Three key stats in clean boxes
     facts = [
-        ("💰 $500,000 USD", "Total Global Funding"),
-        ("⚽ 64 Matches", "Grant Opportunities"),
-        ("🏆 Historic First", "Award Linked to Grant")
+        ("$500K", "Total Funding"),
+        ("64", "Matches"),
+        ("First Ever", "Linked Grant")
     ]
     
-    box_width = 280
-    box_height = 100
-    spacing = 30
-    start_x = (width - (box_width * 3 + spacing * 2)) // 2
+    box_width = 260
+    box_height = 110
+    box_spacing = 40
+    total_width = (box_width * 3) + (box_spacing * 2)
+    start_x = (width - total_width) // 2
     
     for i, (main_text, sub_text) in enumerate(facts):
-        x = start_x + i * (box_width + spacing)
-        # Draw box background
+        x = start_x + i * (box_width + box_spacing)
+        
+        # Box with shadow effect
+        shadow_offset = 4
+        draw.rectangle(
+            [(x + shadow_offset, y_pos + shadow_offset), 
+             (x + box_width + shadow_offset, y_pos + box_height + shadow_offset)],
+            fill=(10, 20, 80)
+        )
+        
+        # Main box
         draw.rectangle(
             [(x, y_pos), (x + box_width, y_pos + box_height)],
             fill=light_blue,
             outline=gold,
-            width=3
+            width=4
         )
-        # Draw text
-        draw.text((x + box_width // 2, y_pos + 30), main_text, font=body_font, fill=white, anchor="mm")
-        draw.text((x + box_width // 2, y_pos + 70), sub_text, font=small_font, fill=white, anchor="mm")
+        
+        # Text
+        draw.text((x + box_width // 2, y_pos + 35), main_text, 
+                 font=heading_font, fill=gold, anchor="mm")
+        draw.text((x + box_width // 2, y_pos + 75), sub_text, 
+                 font=body_font, fill=white, anchor="mm")
     
-    y_pos += box_height + 50
+    y_pos += box_height + 60
     
     # HOW IT WORKED section
-    draw.rectangle([(80, y_pos), (width - 80, y_pos + 4)], fill=gold)
-    y_pos += 30
+    draw.rectangle([(line_margin, y_pos), (width - line_margin, y_pos + 3)], fill=gold)
+    y_pos += 40
     draw.text((width // 2, y_pos), "HOW IT WORKED", font=heading_font, fill=gold, anchor="mm")
-    y_pos += 60
+    y_pos += 50
     
-    how_it_worked = [
-        "• Female small business owners received grants",
-        "• $5,000 (group stage) to $50,000 (final)",
-        "• One grant per match based on Player of",
-        "  the Match winner's country"
+    # Content box
+    content_padding = 100
+    how_text = [
+        "Female small business owners received grants",
+        "after each of 64 matches",
+        "",
+        "$5,000 (group stage) → $50,000 (final)",
+        "",
+        "Grant awarded based on Player of the",
+        "Match winner's country"
     ]
     
-    for line in how_it_worked:
-        draw.text((120, y_pos), line, font=body_font, fill=white, anchor="lm")
-        y_pos += 40
+    for line in how_text:
+        if line:
+            draw.text((content_padding, y_pos), line, font=body_font, fill=white, anchor="lm")
+        y_pos += 34
     
-    y_pos += 20
+    y_pos += 30
     
     # CANADA PARTNERSHIP section
-    draw.rectangle([(80, y_pos), (width - 80, y_pos + 4)], fill=gold)
-    y_pos += 30
+    draw.rectangle([(line_margin, y_pos), (width - line_margin, y_pos + 3)], fill=gold)
+    y_pos += 40
     draw.text((width // 2, y_pos), "🇨🇦 CANADA PARTNERSHIP", font=heading_font, fill=gold, anchor="mm")
-    y_pos += 60
+    y_pos += 50
     
-    # Canada partnership box
+    # Partnership box with shadow
+    box_y_start = y_pos
+    box_height = 200
+    shadow_offset = 4
+    
     draw.rectangle(
-        [(80, y_pos), (width - 80, y_pos + 180)],
+        [(line_margin + shadow_offset, box_y_start + shadow_offset), 
+         (width - line_margin + shadow_offset, box_y_start + box_height + shadow_offset)],
+        fill=(10, 20, 80)
+    )
+    
+    draw.rectangle(
+        [(line_margin, box_y_start), (width - line_margin, box_y_start + box_height)],
         fill=light_blue,
         outline=gold,
-        width=3
+        width=4
     )
     
     canada_text = [
-        "Canadian Council of Aboriginal",
-        "Business (CCAB) Partnership",
+        "Canadian Council of Aboriginal Business",
+        "(CCAB) Partnership",
         "",
-        "Supporting Indigenous women",
-        "entrepreneurs through the",
-        "She's Next Program"
+        "Supporting Indigenous women entrepreneurs",
+        "through the She's Next Program"
     ]
     
-    text_y = y_pos + 30
+    text_y = box_y_start + 40
     for line in canada_text:
         if line:
             draw.text((width // 2, text_y), line, font=body_font, fill=white, anchor="mm")
-        text_y += 30
+        text_y += 32
     
-    y_pos += 220
+    y_pos = box_y_start + box_height + 50
     
-    # Bottom decoration
-    draw.rectangle([(100, y_pos), (width - 100, y_pos + 4)], fill=gold)
+    # Footer
+    draw.rectangle([(line_margin, y_pos), (width - line_margin, y_pos + 3)], fill=gold)
     y_pos += 30
-    
-    # Footer text
-    draw.text((width // 2, y_pos), "FIFA Women's World Cup", font=small_font, fill=white, anchor="mm")
-    y_pos += 30
-    draw.text((width // 2, y_pos), "Australia & New Zealand 2023", font=small_font, fill=white, anchor="mm")
+    draw.text((width // 2, y_pos), "FIFA Women's World Cup Australia & New Zealand 2023™", 
+             font=small_font, fill=white, anchor="mm")
     
     return img
 
