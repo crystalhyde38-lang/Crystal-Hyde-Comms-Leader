@@ -1,34 +1,498 @@
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
+/* Landing Page Styles */
+.landing-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1434CB 0%, #0a1f6f 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  color: white;
+}
+
+.landing-content {
+  max-width: 1200px;
+  width: 100%;
+  text-align: center;
+  animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.logo-section {
+  margin-bottom: 3rem;
+}
+
+.visa-logo {
+  font-size: 3rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  color: #FFD700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.main-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.highlight {
+  color: #FFD700;
+  font-weight: 800;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  margin-bottom: 3rem;
+  opacity: 0.95;
+  font-weight: 300;
+}
+
+.cta-button {
+  background: #FFD700;
+  color: #1434CB;
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding: 1rem 2.5rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+  margin-bottom: 4rem;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+  background: #FFF;
+}
+
+.arrow-icon {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.cta-button:hover .arrow-icon {
+  transform: translateX(5px);
+}
+
+.info-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.info-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.info-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.info-card h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #FFD700;
+  margin-bottom: 0.5rem;
+}
+
+.info-card p {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* Generator Page Styles */
+.generator-page {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #0a0e27 0%, #1a1f3a 100%);
+  color: white;
+  padding: 2rem;
+}
+
+.generator-header {
+  max-width: 1600px;
+  margin: 0 auto 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid rgba(20, 52, 203, 0.3);
+}
+
+.visa-logo-small {
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  color: #FFD700;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.generator-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1434CB;
+  text-shadow: 0 0 20px rgba(20, 52, 203, 0.5);
+}
+
+.generator-content {
+  max-width: 1600px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.info-section {
+  background: rgba(20, 52, 203, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(20, 52, 203, 0.3);
+  border-radius: 20px;
+  padding: 2rem;
+}
+
+.info-section h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+  color: #FFD700;
+  border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+  padding-bottom: 0.75rem;
+}
+
+.detail-group {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border-left: 4px solid #1434CB;
+}
+
+.detail-group h3 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: #FFD700;
+}
+
+.detail-group ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.detail-group li {
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.detail-group li:before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: #1434CB;
+  font-weight: bold;
+}
+
+.detail-group strong {
+  color: #FFD700;
+  font-weight: 600;
+}
+
+.context-note {
+  border-left-color: #FFD700;
+  background: rgba(255, 215, 0, 0.05);
+}
+
+.context-note p {
+  line-height: 1.8;
+  opacity: 0.95;
+}
+
+.generate-button {
+  width: 100%;
+  background: linear-gradient(135deg, #1434CB 0%, #0a1f6f 100%);
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(20, 52, 203, 0.4);
+  margin-top: 1rem;
+}
+
+.generate-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(20, 52, 203, 0.6);
+}
+
+.generate-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.output-section {
+  background: rgba(20, 52, 203, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(20, 52, 203, 0.3);
+  border-radius: 20px;
+  padding: 2rem;
+  min-height: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-container {
+  text-align: center;
+  padding: 3rem;
+}
+
+.spinner {
+  width: 80px;
+  height: 80px;
+  border: 6px solid rgba(20, 52, 203, 0.2);
+  border-top: 6px solid #1434CB;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 2rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #FFD700;
+  margin-bottom: 0.5rem;
+}
+
+.loading-subtext {
+  font-size: 0.95rem;
+  opacity: 0.7;
+}
+
+.error-container {
+  text-align: center;
+  padding: 3rem;
+}
+
+.error-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.error-container h3 {
+  font-size: 1.5rem;
+  color: #ff4444;
+  margin-bottom: 1rem;
+}
+
+.error-container p {
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.retry-button {
+  background: #1434CB;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.retry-button:hover {
+  background: #0a1f6f;
+  transform: translateY(-2px);
+}
+
+.result-container {
+  width: 100%;
+}
+
+.result-container h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #FFD700;
+  text-align: center;
+}
+
+.image-wrapper {
+  background: white;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.generated-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.download-button,
+.regenerate-button {
+  flex: 1;
+  max-width: 200px;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.download-button {
+  background: #FFD700;
+  color: #1434CB;
+}
+
+.download-button:hover {
+  background: #FFF;
+  transform: translateY(-2px);
+}
+
+.regenerate-button {
+  background: rgba(20, 52, 203, 0.8);
+  color: white;
+  border: 1px solid #1434CB;
+}
+
+.regenerate-button:hover {
+  background: #1434CB;
+  transform: translateY(-2px);
+}
+
+.download-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.placeholder-container {
+  text-align: center;
+  padding: 4rem 2rem;
+  opacity: 0.5;
+}
+
+.placeholder-icon {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+}
+
+.placeholder-container p {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.placeholder-subtext {
+  font-size: 0.95rem;
+  opacity: 0.7;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .generator-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .output-section {
+    min-height: 600px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-title {
+    font-size: 2.5rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+  }
+  
+  .info-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .generator-header {
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-}
-
-.App-link {
-    color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+  }
+  
+  .download-button,
+  .regenerate-button {
+    max-width: 100%;
+  }
 }
