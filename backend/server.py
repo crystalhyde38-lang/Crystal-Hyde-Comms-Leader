@@ -10,7 +10,8 @@ from typing import List, Optional
 import uuid
 from datetime import datetime, timezone
 import base64
-from emergentintegrations.llm.openai.image_generation import OpenAIImageGeneration
+from PIL import Image, ImageDraw, ImageFont
+from io import BytesIO
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
