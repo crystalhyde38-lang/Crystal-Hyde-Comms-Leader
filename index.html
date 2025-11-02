@@ -6,7 +6,7 @@
         background: #f5f5f5;
     }
     
-    /* NEW: Header Styles */
+    /* Header Styles */
     .site-header {
         background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
         color: white;
@@ -164,11 +164,76 @@
         margin-bottom: 30px;
     }
     
-    /* NEW: Publication Logo Style */
-    .publication-logo {
-        width: 150px;
-        height: auto;
+    /* Company Logos Section */
+    .company-logos {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        align-items: center;
+        justify-content: center;
+        padding: 30px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        margin: 30px 0;
+    }
+    
+    .company-logos img {
+        height: 50px;
+        width: auto;
+        object-fit: contain;
+        filter: grayscale(50%);
+        transition: filter 0.3s;
+    }
+    
+    .company-logos img:hover {
+        filter: grayscale(0%);
+    }
+    
+    /* Testimonial Quote Box */
+    .testimonial-box {
+        background: #f0f7ff;
+        border-left: 4px solid #3498db;
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 6px;
+        font-style: italic;
+    }
+    
+    .testimonial-box .quote-text {
+        color: #2c3e50;
+        font-size: 15px;
+        line-height: 1.6;
         margin-bottom: 10px;
+    }
+    
+    .testimonial-box .quote-author {
+        color: #666;
+        font-size: 14px;
+        font-weight: bold;
+        font-style: normal;
+    }
+    
+    /* Logo comparison */
+    .logo-comparison {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin: 20px 0;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 8px;
+    }
+    
+    .logo-box {
+        text-align: center;
+        padding: 20px;
+        background: white;
+        border-radius: 6px;
+    }
+    
+    .logo-box h5 {
+        margin-bottom: 15px;
+        color: #666;
     }
     
     @media (max-width: 768px) {
@@ -205,17 +270,29 @@
         .content {
             padding: 20px;
         }
+        
+        .logo-comparison {
+            grid-template-columns: 1fr;
+        }
+        
+        .company-logos {
+            gap: 20px;
+        }
+        
+        .company-logos img {
+            height: 40px;
+        }
     }
 </style>
-</head> <body> <!-- NEW: Site Header with Photo --> <div class="site-header"> <div class="header-content"> <img src="https://customer-assets.emergentagent.com/job_infographic-pivot/artifacts/ms40tlrg_Crystal.jpg" alt="Crystal Hyde" class="header-image"> <div class="header-text"> <h1>Crystal Hyde</h1> <div class="tagline">Senior Communications Leader</div> </div> </div> </div>
+</head> <body> <!-- Site Header with Photo --> <div class="site-header"> <div class="header-content"> <img src="https://customer-assets.emergentagent.com/job_infographic-pivot/artifacts/ms40tlrg_Crystal.jpg" alt="Crystal Hyde" class="header-image"> <div class="header-text"> <h1>Crystal Hyde</h1> <div class="tagline">Senior Communications Leader</div> </div> </div> </div>
 <div class="container">
     <div class="tabs">
         <button class="tab active" onclick="openTab(event, 'overview')">Overview</button>
         <button class="tab" onclick="openTab(event, 'experience')">Experience</button>
         <button class="tab" onclick="openTab(event, 'portfolio')">Portfolio</button>
+        <button class="tab" onclick="openTab(event, 'narrative-development')">Narrative Development</button>
         <button class="tab" onclick="openTab(event, 'expertise')">Expertise</button>
         <button class="tab" onclick="openTab(event, 'education')">Education</button>
-        <button class="tab" onclick="openTab(event, 'narrative-development')">Narrative Development</button>
     </div>
     
     <div class="content">
@@ -244,6 +321,19 @@
                     <li><strong>Strategic & Tactical Balance:</strong> Equally comfortable developing long-term strategy and executing hands-on campaigns</li>
                     <li><strong>Cross-Functional Leadership:</strong> Proven ability to collaborate with Marketing, Sales, Product, Legal, HR and Government Relations</li>
                 </ul>
+            </section>
+            
+            <!-- Company Logos -->
+            <section>
+                <h3 style="text-align: center; color: #666;">Organizations I've Worked With</h3>
+                <div class="company-logos">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/GM_logo.svg/320px-GM_logo.svg.png" alt="GM Canada" title="GM Canada">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Visa.svg/320px-Visa.svg.png" alt="Visa Canada" title="Visa Canada">
+                    <img src="https://customer-assets.emergentagent.com/job_infographic-pivot/artifacts/ps15q5o3_Propel%20New_edited.jpg.avif" alt="Scout & Propel Communications" title="Scout & Propel Communications">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/BlackBerry_Logo.svg/320px-BlackBerry_Logo.svg.png" alt="BlackBerry" title="BlackBerry">
+                    <img src="https://www.linamar.com/themes/custom/linamar/logo.svg" alt="Linamar Corporation" title="Linamar Corporation">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Ontario_Logo.svg/320px-Ontario_Logo.svg.png" alt="Ontario Government" title="Ontario Government">
+                </div>
             </section>
         </div>
 
@@ -301,35 +391,9 @@
         <!-- PORTFOLIO TAB -->
         <div id="portfolio" class="tab-content">
             <section>
-<h2>Portfolio Highlights</h2>
-                <h3>Creative PR & Brand Activations</h3>
+                <h2>Portfolio Highlights</h2>
                 
-                <div class="highlight-box">
-                    <h4>Product awareness challenge</h4>
-                    <h4>Challenge:</h4>
-                    <p>Create memorable brand experience showcasing EV technology capabilities</p>
-                    <h4>Solution:</h4>
-                    <p>Partnered with Rotary Club to use Silverado EV battery to illuminate 30-foot Tree of Remembrance at Nathan Phillips Square</p>
-                    <h4>Results:</h4>
-                    <p>200% media coverage goals exceeded, dozen influencer partnerships, live TV segment</p>
-                </div>
-
-                <div class="highlight-box">
-                    <h4>Program conflict challenge</h4>
-                    <h4>Challenge:</h4>
-                    <p>Align global World Cup sponsorship with local Canadian "She's Next" program</p>
-<h4>Solution:</h4> <p>Created culturally-focused grant program supporting Indigenous women-led businesses</p> <h4>Results:</h4> <p>$15,000 initial funding, lasting community partnership extending beyond World Cup</p> </div>
-                <div class="highlight-box">
-                    <h4>Company positioning challenge</h4>
-                    <h4>Challenge:</h4>
-                    <p>Ensure company received credit for 1,000 job creation announcement beyond political coverage</p>
-                    <h4>Solution:</h4>
-                    <p>Pre-pitched exclusive CEO interviews to four targeted outlets post-announcement</p>
-                    <h4>Results:</h4>
-                    <p>100% success rate, dedicated company coverage with detailed context</p>
-                </div>
-
-                <!-- VISA WORLD CUP SECTION -->
+                <!-- VISA WORLD CUP SECTION - NOW FIRST -->
                 <div style="border: 2px solid #1a1f71; border-radius: 12px; padding: 25px; margin: 20px 0; background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);">
                     <h3 style="color: #1a1f71; margin-top: 0; border-bottom: 3px solid #1a1f71; padding-bottom: 10px;">
                         🏆 Visa FIFA Women's World Cup 2023: Strategic Program Alignment
@@ -379,32 +443,81 @@
                     <li>Negotiated partnership tied to creating 3,000 new jobs, orchestrated high-profile announcement with Ontario Minister</li>
                     <li>Developed comprehensive PR campaign for Economic Development & Trade Cabinet Minister</li>
                     <li>Secured front-page local coverage and Toronto Star business section placement, created reusable visual assets</li>
+                    <li><strong>Corporate Rebrand:</strong> Oversaw complete company rebrand for Linamar Corporation, transitioning from green box logo to modern copper diamond identity representing autonomous yet collaborative facilities and precision manufacturing capabilities</li>
                     <li>Initiated relationship with Aboriginal Small Business Organization for grant program</li>
                     <li>Established jointly-administered program with long-term continuation beyond initial sponsorship</li>
                 </ul>
+                
+                <!-- Linamar Logo Comparison -->
+                <div class="logo-comparison">
+                    <div class="logo-box">
+                        <h5>Old Logo (Pre-2007)</h5>
+                        <div style="border: 2px solid #4CAF50; padding: 20px; display: inline-block;">
+                            <span style="font-family: Arial, sans-serif; font-size: 24px; font-weight: bold; color: #4CAF50;">LINAMAR</span>
+                        </div>
+                        <p style="font-size: 13px; color: #666; margin-top: 10px;">Green box design</p>
+                    </div>
+                    <div class="logo-box">
+                        <h5>New Logo (2007)</h5>
+                        <img src="https://www.linamar.com/themes/custom/linamar/logo.svg" alt="Linamar New Logo" style="height: 60px; width: auto;">
+                        <p style="font-size: 13px; color: #666; margin-top: 10px;">Copper diamond with precision grid pattern</p>
+                    </div>
+                </div>
 
                 <h3>Executive Communications & Thought Leadership</h3>
                 
                 <h4>Media Training & Executive Preparation</h4>
-                <ul>
-                    <li>Coached dozens of C-suite executives on media responses and interview techniques across BlackBerry, Visa, and consulting clients</li>
-                    <li>Prepared speakers for high-stakes media interviews and external presentations</li>
-                    <li>Created media briefing materials and Q&A documents for sensitive announcements</li>
-                    <li>Provided onsite support during major media events and product launches</li>
-                </ul>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: start;">
+                    <ul style="margin: 0;">
+                        <li>Coached dozens of C-suite executives on media responses and interview techniques across BlackBerry, Visa, and consulting clients</li>
+                        <li>Prepared speakers for high-stakes media interviews and external presentations</li>
+                        <li>Created media briefing materials and Q&A documents for sensitive announcements</li>
+                        <li>Provided onsite support during major media events and product launches</li>
+                    </ul>
+                    
+                    <!-- Testimonial -->
+                    <div class="testimonial-box">
+                        <div class="quote-text">
+                            "Today's media training session was highly valuable for everyone on the team regardless of experience. Crystal was personable, funny and offered real anecdotes from her own experience to make everything practical, memorable and engaging."
+                        </div>
+                        <div class="quote-author">
+                            — Canadian Government Official<br>
+                            Government of Canada
+                        </div>
+                    </div>
+                </div>
 
                 <h4>Published Thought Leadership</h4>
                 
-                <!-- UPDATED: GLOBE AND MAIL ARTICLE CARD WITH LOGO -->
+                <!-- UPDATED: GLOBE AND MAIL ARTICLE CARD WITH FIXED LOGO -->
                 <div style="border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin: 15px 0; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                    <!-- Globe and Mail Logo -->
-                    <svg width="150" height="30" viewBox="0 0 200 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 15px;">
-                        <text x="0" y="30" font-family="Georgia, serif" font-size="24" font-weight="bold" fill="#DA161F">The Globe and Mail</text>
+                    <!-- Globe and Mail Logo - FIXED -->
+                    <svg width="200" height="35" viewBox="0 0 240 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 15px;">
+                        <text x="0" y="28" font-family="Georgia, serif" font-size="20" font-weight="bold" fill="#DA161F">The Globe and Mail</text>
                     </svg>
                     
                     <div style="border-left: 4px solid #DA161F; padding-left: 15px; margin-bottom: 15px;">
                         <h4 style="margin: 0 0 10px 0; color: #333;">
-<a href="https://www.theglobeandmail.com/business/careers/leadership/article-how-do-you-deal-with-workplace-bullies/" target="_blank" style="color: #DA161F; text-decoration: none;"> How do you deal with workplace bullies? </a> </h4> <p style="font-size: 13px; color: #666; margin: 5px 0;"> July 27, 2019 </p> </div> <p style="font-size: 14px; line-height: 1.6; color: #444; margin: 0 0 15px 0;"> <em>"Aggressive and mischievous behaviours cannot go unchecked; turning a blind eye only allows these behaviours to grow in power. Office politics are tricky to navigate and sometimes difficult to see clearly from the inside; seeking outside support can help leaders identify the issues and introduce a strategy for change."</em> </p> <div style="background: #f5f5f5; padding: 12px; border-radius: 4px;"> <p style="font-size: 13px; margin: 0; color: #555;"> <strong>Article Focus:</strong> Leadership strategies for addressing workplace harassment and building healthier organizational cultures through professional coaching and anti-harassment policies. </p> </div> </div>
+                            <a href="https://www.theglobeandmail.com/business/careers/leadership/article-how-do-you-deal-with-workplace-bullies/" 
+                               target="_blank" 
+                               style="color: #DA161F; text-decoration: none;">
+                                How do you deal with workplace bullies?
+                            </a>
+                        </h4>
+                        <p style="font-size: 13px; color: #666; margin: 5px 0;">
+                            July 27, 2019
+                        </p>
+                    </div>
+                    <p style="font-size: 14px; line-height: 1.6; color: #444; margin: 0 0 15px 0;">
+                        <em>"Aggressive and mischievous behaviours cannot go unchecked; turning a blind eye only allows these behaviours to grow in power. Office politics are tricky to navigate and sometimes difficult to see clearly from the inside; seeking outside support can help leaders identify the issues and introduce a strategy for change."</em>
+                    </p>
+                    <div style="background: #f5f5f5; padding: 12px; border-radius: 4px;">
+                        <p style="font-size: 13px; margin: 0; color: #555;">
+                            <strong>Article Focus:</strong> Leadership strategies for addressing workplace harassment and building healthier organizational cultures through professional coaching and anti-harassment policies.
+                        </p>
+                    </div>
+                </div>
 
                 <ul>
                     <li>Articles featured in <a href="https://www.talentcanada.ca/a-new-ceo-is-going-to-be-named-what-do-you-do/" target="_blank">Talent Canada</a> magazine, MarketingProfs.com</li>
@@ -481,7 +594,8 @@
                     <li><strong>Government & Public Affairs:</strong> Grant applications, ministerial communications, political campaign experience</li>
                 </ul>
             </section>
-</div>
+        </div>
+
         <!-- EDUCATION TAB -->
         <div id="education" class="tab-content">
             <section>
@@ -492,11 +606,25 @@
                 <h3>Digital Marketing Certificate | 2025 - Present</h3>
                 <p>Coursera (In Progress)</p>
                 
-                <h3>Bachelor of Arts, Political Studies</h3>
-                <p>Queen's University, Kingston, Ontario</p>
-                
-                <h3>Diploma, Public Relations</h3>
-                <p>Durham College, Oshawa, Ontario</p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 30px 0;">
+                    <!-- Queen's University -->
+                    <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/cd/Queen%27s_University_Logo.svg/320px-Queen%27s_University_Logo.svg.png" 
+                             alt="Queen's University" 
+                             style="height: 80px; width: auto; margin-bottom: 15px;">
+                        <h3 style="margin: 10px 0; font-size: 18px;">Bachelor of Arts, Political Studies</h3>
+                        <p style="color: #666; margin: 0;">Queen's University, Kingston, Ontario</p>
+                    </div>
+                    
+                    <!-- Durham College -->
+                    <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                        <img src="https://www.durhamcollege.ca/wp-content/themes/dc/assets/images/dc-logo.svg" 
+                             alt="Durham College" 
+                             style="height: 80px; width: auto; margin-bottom: 15px;">
+                        <h3 style="margin: 10px 0; font-size: 18px;">Diploma, Public Relations</h3>
+                        <p style="color: #666; margin: 0;">Durham College, Oshawa, Ontario</p>
+                    </div>
+                </div>
             </section>
 
             <section>
@@ -537,7 +665,6 @@
                         </p>
                     </div>
 
-                    <!-- UPDATED: Replaced with correct CBC image -->
                     <div style="border: 1px solid #e0e0e0; padding: 15px; border-radius: 8px;">
                         <img src="https://i.cbc.ca/1.3632423.1465837292!/fileImage/httpImage/image.jpeg_gen/derivatives/16x9_1180/gm-president-with-chevrolet-bolt-ev.jpeg" 
                              alt="GM Canada President with Chevrolet Bolt EV" 
@@ -617,4 +744,3 @@
     }
 </script>
 </body> </html>
-
