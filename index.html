@@ -177,6 +177,17 @@
         margin: 30px 0;
     }
     
+    .company-logos svg {
+        height: 50px;
+        width: auto;
+        filter: grayscale(50%);
+        transition: filter 0.3s;
+    }
+    
+    .company-logos svg:hover {
+        filter: grayscale(0%);
+    }
+    
     .company-logos img {
         height: 50px;
         width: auto;
@@ -279,6 +290,10 @@
             gap: 20px;
         }
         
+        .company-logos svg {
+            height: 40px;
+        }
+        
         .company-logos img {
             height: 40px;
         }
@@ -327,11 +342,27 @@
             <section>
                 <h3 style="text-align: center; color: #666;">Organizations I've Worked With</h3>
                 <div class="company-logos">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/GM_logo.svg/320px-GM_logo.svg.png" alt="GM Canada" title="GM Canada">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Visa.svg/320px-Visa.svg.png" alt="Visa Canada" title="Visa Canada">
+                    <!-- GM Logo -->
+                    <svg width="100" height="50" viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg" title="GM Canada">
+                        <rect width="100" height="50" fill="#0055A5"/>
+                        <text x="50" y="32" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="white" text-anchor="middle">GM</text>
+                    </svg>
+                    
+                    <!-- Visa Logo -->
+                    <svg width="100" height="50" viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg" title="Visa Canada">
+                        <text x="5" y="35" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#1A1F71">VISA</text>
+                    </svg>
+                    
+                    <!-- Propel Logo -->
                     <img src="https://customer-assets.emergentagent.com/job_infographic-pivot/artifacts/ps15q5o3_Propel%20New_edited.jpg.avif" alt="Scout & Propel Communications" title="Scout & Propel Communications">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/BlackBerry_Logo.svg/320px-BlackBerry_Logo.svg.png" alt="BlackBerry" title="BlackBerry">
-                    <svg width="120" height="50" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" title="Linamar Corporation" style="filter: grayscale(50%);">
+                    
+                    <!-- BlackBerry Logo -->
+                    <svg width="120" height="50" viewBox="0 0 140 50" xmlns="http://www.w3.org/2000/svg" title="BlackBerry">
+                        <text x="5" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="300" fill="#000000">BlackBerry</text>
+                    </svg>
+                    
+                    <!-- Linamar Logo -->
+                    <svg width="140" height="50" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" title="Linamar Corporation">
                         <polygon points="10,30 25,15 40,30 25,45" fill="#B87333" opacity="0.3"/>
                         <rect x="17" y="22" width="16" height="16" fill="none" stroke="#B87333" stroke-width="1.5"/>
                         <line x1="20" y1="25" x2="20" y2="35" stroke="#B87333" stroke-width="1"/>
@@ -339,7 +370,12 @@
                         <line x1="30" y1="25" x2="30" y2="35" stroke="#B87333" stroke-width="1"/>
                         <text x="50" y="38" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#6B7280">LINAMAR</text>
                     </svg>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Ontario_Logo.svg/320px-Ontario_Logo.svg.png" alt="Ontario Government" title="Ontario Government">
+                    
+                    <!-- Ontario Logo -->
+                    <svg width="120" height="50" viewBox="0 0 120 50" xmlns="http://www.w3.org/2000/svg" title="Ontario Government">
+                        <path d="M10,25 L30,10 L50,25 L30,40 Z" fill="#007934" opacity="0.8"/>
+                        <text x="60" y="30" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#007934">Ontario</text>
+                    </svg>
                 </div>
             </section>
         </div>
@@ -669,13 +705,19 @@
         <!-- NARRATIVE DEVELOPMENT TAB -->
         <div id="narrative-development" class="tab-content">
             <section>
-                <h2>Narrative Development: GM Canada EV Story Evolution</h2>
-                <p>As Director of Brand & Technology Communications at GM Canada, I led the strategic narrative shift from addressing "range anxiety" to building "range confidence" in electric vehicles. This evolution reflects how we transformed customer concerns into competitive advantages through compelling storytelling and strategic media partnerships.</p>
+                <h2>Narrative Development: Strategic Communications Impact</h2>
+                <p>Throughout my career, I've demonstrated the power of strategic narrative development to shape media coverage, position companies effectively, and transform challenges into opportunities. Here are two key examples from my work at GM Canada.</p>
             </section>
 
             <section>
-                <h3>Media Coverage: 1,000 Jobs & Technology Innovation</h3>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px;">
+                <h3>Company Positioning: Preventing Political Overshadowing</h3>
+                <p><strong>The Challenge:</strong> GM Canada was announcing 1,000 new engineering jobs alongside government officials. Without strategic narrative development, the company's achievement risked being overshadowed by political messaging.</p>
+                
+                <p><strong>My Approach:</strong> I pitched a deeper narrative about how these new engineering jobs would integrate into GM's operations and support the company's growth and innovation trajectory. This positioned GM as the primary story rather than a backdrop for political announcements.</p>
+                
+                <p><strong>The Results:</strong> Media coverage successfully highlighted GM's strategic vision and technological leadership, with the company receiving substantive coverage beyond the political photo opportunity.</p>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 30px 0;">
                     <div style="border: 1px solid #e0e0e0; padding: 15px; border-radius: 8px;">
                         <img src="https://i.cbc.ca/1.3628756.1465571126!/cpImage/httpImage/image.jpg_gen/derivatives/16x9_1180/gm-trudeau-20160610.jpg?im=Resize%3D860" 
                              alt="GM Canada Jobs Announcement" 
@@ -686,6 +728,7 @@
                         <p style="font-size: 14px; margin: 5px 0;">
                             <strong>Source:</strong> <a href="https://www.cbc.ca/news/business/gm-canada-engineers-1.3624257" target="_blank">CBC News</a>
                         </p>
+                        <p style="font-size: 13px; color: #555; margin-top: 10px;">Despite high-profile political presence, strategic narrative ensured GM's story remained front and center</p>
                     </div>
 
                     <div style="border: 1px solid #e0e0e0; padding: 15px; border-radius: 8px;">
@@ -698,12 +741,16 @@
                         <p style="font-size: 14px; margin: 5px 0;">
                             <strong>Source:</strong> <a href="https://www.cbc.ca/radio/thecurrent/the-current-for-june-13-2016-1.3632233/gm-canada-president-says-innovation-keeps-canada-in-auto-game-1.3632375" target="_blank">CBC Radio - The Current</a>
                         </p>
+                        <p style="font-size: 13px; color: #555; margin-top: 10px;">Follow-up coverage focused on GM's innovation strategy and technology leadership</p>
                     </div>
                 </div>
             </section>
 
             <section>
-                <h3>Messaging Evolution: From Anxiety to Confidence</h3>
+                <h3>GM Canada EV Story Evolution: From Range Anxiety to Range Confidence</h3>
+                <p>As Director of Brand & Technology Communications at GM Canada, I led the strategic narrative shift from addressing "range anxiety" to building "range confidence" in electric vehicles. This evolution reflects how we transformed customer concerns into competitive advantages through compelling storytelling and strategic media partnerships.</p>
+                
+                <h4 style="margin-top: 30px;">Messaging Evolution: From Anxiety to Confidence</h4>
                 <p>Through strategic narrative development, GM Canada evolved its EV communications from addressing customer concerns to positioning technological leadership. This messaging shift demonstrates how effective communications can reframe challenges as opportunities.</p>
 
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 20px;">
@@ -742,6 +789,7 @@
                     <li><strong>Media Partnerships:</strong> Built strategic relationships with tech-focused outlets (BetaKit, The Logic) to establish GM as technology leader</li>
                     <li><strong>Integrated Communications:</strong> Created surround-sound strategy bridging PR and marketing with earned, owned, and paid content</li>
                     <li><strong>Brand Differentiation:</strong> Positioned OnStar connectivity and advanced features as confidence-building competitive advantages</li>
+                    <li><strong>Company Positioning:</strong> Ensured corporate achievements received substantive coverage by developing narratives that prevented political overshadowing</li>
                 </ul>
             </section>
         </div>
@@ -766,4 +814,4 @@
         evt.currentTarget.className += " active";
     }
 </script>
-</body> </html> 
+</body> </html>
